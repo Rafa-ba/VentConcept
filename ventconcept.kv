@@ -1,0 +1,3477 @@
+
+ #:import math math
+#:import Factory kivy.factory.Factory
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+
+<TabbedPanelHeader>:
+    background_normal: ''
+    # background_color: .3, .3, .4, 1
+    background_color: .37, .3, .5, 1
+
+<MainTabI@TabbedPanelItem>
+	#size_hint: 2, 1
+	#background_color: (.2, .2, .2, 1)
+	#background_down: ""
+    #background_normal: ""
+    #padding: [dp(20),dp(10)]
+<InnerTabI@TabbedPanelItem>
+
+<ButtonSmall1@Button>:
+	markup: True
+	size_hint: None, None
+	size: dp(80), dp(30)
+
+<ButtonBig1@Button>:
+	markup: True
+	size_hint: None, None
+	size: dp(120), dp(40)
+
+<WindowButton@Button>:
+	markup: True
+	size_hint: None, None
+	size: dp(45), dp(30)	
+
+<TeInFixed@TextInput>:
+	markup: True
+	size_hint: None, None
+	width: dp(80)
+	height: dp(30)
+	multiline: False
+	write_tab: False
+
+<TeInFixedBig@TextInput>:
+	markup: True
+	size_hint: None, None
+	width: dp(120)
+	height: dp(40)
+	multiline: False
+	write_tab: False
+
+<LabelSmall1@Label>:
+	markup: True
+	size_hint: None, None
+	#text_size: self.size
+	width: dp(80)
+	height: dp(30)
+	halign: "left"
+
+<LabelBig1@Label>:
+	markup: True
+	size_hint: None, None
+	#text_size: self.size
+	width: dp(120)
+	height: dp(40)
+	font_size: 20
+	halign: "left"
+<LabelBig1_longer@Label>:
+	markup: True
+	size_hint: None, None
+	#text_size: self.size
+	width: dp(250)
+	height: dp(40)
+	font_size: 20
+	halign: "left"
+
+<ToggleButtGroup@ToggleButton>:
+	group: "templategroup"
+	size_hint: None, None
+	width: dp(160)
+	height: dp(60)
+
+<ToggleButtonRec@ToggleButton>:
+	
+	size_hint: None, None 
+	width: dp(45)
+	height: dp(30)
+	background_color: 1, 1, 0, 1
+
+<ToggleButtonLeftR@ToggleButtonRec>:
+	text: "LL"
+
+<ToggleButtonRightR@ToggleButtonRec>:
+	text: "N"
+
+<ToggleButtonMidR@ToggleButtonRec>:
+	text: "AL"
+
+
+
+
+
+# Spinner objects
+
+<SpinnerC@Spinner>:
+	markup: True
+	size_hint: None, None
+	size: dp(180), dp(45)
+	#background_normal: 'graphics/buttons/dropdown_green.png'
+	#background_down: 'graphics/buttons/dropdown_blue.png'
+	option_cls: Factory.get("MySpinnerOption")
+
+<SpinnerD@Spinner>:
+	markup: True
+	size_hint: None, None
+	size: dp(200), dp(45)
+	#background_normal: 'graphics/buttons/dropdown_green.png'
+	#background_down: 'graphics/buttons/dropdown_blue.png'
+	option_cls: Factory.get("MySpinnerOptionD")	
+
+<MySpinnerOption@SpinnerOption>:
+	size_hint: None, None
+	size: dp(160), dp(35)
+	background_color: [0, 0, 1, 1] 
+
+<MySpinnerOptionD@SpinnerOption>:
+	size_hint: None, None
+	size: dp(190), dp(35)
+	background_color: [0, 0, 1, 1] 
+
+
+<BoxLayoutStandLine@BoxLayout>:
+	size_hint: None, None
+	pos_hint: {"top": 1}
+	padding: dp(20)
+	spacing: dp(20)
+	canvas.before:
+        Color:
+            rgba: .5, .5, .49, 1
+        Line:
+        	width: 2
+        	rectangle: self.x, self.y, self.width, self.height
+        Color:
+            rgba: .4, .4, .39, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<BoxLayoutStand_woLine@BoxLayout>:
+	size_hint: None, None
+	pos_hint: {"top": 1}
+	padding: dp(20)
+	spacing: dp(20)
+	canvas.before:
+        Color:
+            rgba: .4, .4, .39, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<BoxLayoutLine_woPad@BoxLayout>:
+	size_hint: None, None
+	pos_hint: {"top": 1}
+	# spacing: dp(10)
+	canvas.before:
+        Color:
+            rgba: .5, .5, .49, 1
+        Line:
+        	width: 2
+        	rectangle: self.x, self.y, self.width, self.height
+        Color:
+            rgba: .4, .4, .39, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<BoxLayoutStand@BoxLayout>:
+	size_hint: None, None
+	pos_hint: {"top": 1}
+	spacing: dp(10) 
+
+
+<PeriodErrorPopup>:
+    title: "Missing Input Data"
+    size_hint: None, None
+    size: dp(600), dp(250)
+    auto_dismiss: False
+    BoxLayout:
+    	orientation: "vertical"
+	    spacing: 20
+
+	    FloatLayout: # puffer
+
+	    Label:
+	    	size_hint: 1, None
+	    	valign: "middle"
+	    	height: dp(100)
+	    	text: root.error_warning
+            pos_hint: {'center_x': .5}
+
+	    FloatLayout: # puffer
+
+	    ButtonSmall1:
+	        text: "Close"
+	        on_release: root.dismiss()
+
+<UPopup>:
+    title: "U-Value"
+    size_hint: None, None
+    size: dp(600), dp(250)
+    auto_dismiss: False
+    BoxLayout:
+    	orientation: "vertical"
+	    spacing: 20
+
+	    FloatLayout: # puffer
+
+	    Label:
+	    	size_hint: 1, None
+	    	valign: "middle"
+	    	height: dp(100)
+	    	text: root.thewarning
+            pos_hint: {'center_x': .5}
+
+	    FloatLayout: # puffer
+
+	    ButtonSmall1:
+	        text: "Close"
+	        on_release: root.dismiss()
+
+
+<UvaluePopup>:
+    title: "U-Value Warning"
+    size_hint: None, None
+    size: dp(600), dp(250)
+    auto_dismiss: False
+    BoxLayout:
+    	orientation: "vertical"
+	    spacing: 20
+
+	    FloatLayout: # puffer
+
+	    Label:
+	    	size_hint: 1, None
+	    	valign: "middle"
+	    	height: dp(100)
+	    	text: root.error
+            pos_hint: {'center_x': .5}
+
+	    FloatLayout: # puffer
+
+	    ButtonSmall1:
+	        text: "Close"
+	        on_release: root.dismiss()
+
+
+<PopupEpw>:
+    title: "Choose EPW file"
+    size_hint: None, None
+    size: dp(800), dp(600)
+    auto_dismiss: False
+    BoxLayout:
+        orientation: "vertical"
+        FileChooserIconView:
+            id: epw_file_loader   
+            # FileChooserIconLayout
+            path: root.get_path()
+        BoxLayout:
+            size_hint: 1, None
+            height: dp(45)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            spacing: 20
+            ButtonSmall1:
+                text: "Cancel"
+                on_release: root.dismiss()
+            ButtonSmall1:
+                text: "Load"
+                on_release: root.load(epw_file_loader.selection)
+                # disabled: True if epw_file_loader.selection==[] else False
+                # disabled: True if root.epw_p == " " else False
+                disabled: root.deactivated_but(epw_file_loader.selection)
+
+
+<PopupPeriod>:
+	title: "Simulation Period"
+    size_hint: None, None
+    size: dp(900), dp(700)
+    auto_dismiss: False
+    BoxLayout:
+    	orientation: "vertical"
+		BoxLayout:
+			orientation: 'vertical'
+			size_hint: None, None
+			size: dp(300), dp(500)
+			pos_hint: {"top": 1}
+			padding: dp(20)
+			spacing: dp(10)
+			canvas.before:
+	            Color:
+	                rgba: .5, .5, .49, 1
+	            #Rectangle:
+	                #pos: self.pos
+	                #size: self.size
+	            Line:
+	            	width: 2
+	            	rectangle: self.x, self.y, self.width, self.height
+			LabelBig1:
+				text: "Simulation Period"
+				pos_hint: {"center_x": 0.5}
+			LabelSmall1:
+				text: "Start Month"
+				pos_hint: {"center_x": 0.5}
+			SpinnerC:
+				pos_hint: {"center_x": 0.5}
+				id: spinnerSM
+				typ: "sm"
+				text: "August"
+				values: "January", "February", "March", "April", "May","June", "July", "August", "September", "October", "November", "December"
+				on_text: root.spinner_clicked(spinnerSM.text, spinnerSM.typ)
+			LabelSmall1:
+				pos_hint: {"center_x": 0.5}
+				text: "Start Day"
+			SpinnerC:
+				pos_hint: {"center_x": 0.5}
+				id: spinnerSD
+				typ: "sd"
+				text: "1"
+				values: "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"
+				on_text: root.spinner_clicked(spinnerSD.text, spinnerSD.typ)
+			LabelSmall1:
+				pos_hint: {"center_x": 0.5}
+				text: "End Month"
+			SpinnerC:
+				pos_hint: {"center_x": 0.5}
+				id: spinnerEM
+				typ: "em"
+				text: "August"
+				values: "January", "February", "March", "April", "May","June", "July", "August", "September", "October", "November", "December"
+				on_text: root.spinner_clicked(spinnerEM.text, spinnerEM.typ)
+			LabelSmall1:
+				pos_hint: {"center_x": 0.5}
+				text: "End Day"
+			SpinnerC:
+				pos_hint: {"center_x": 0.5}
+				id: spinnerED
+				typ: "ed"
+				text: "31"
+				values: "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"
+				on_text: root.spinner_clicked(spinnerED.text, spinnerED.typ)
+			# LabelSmall1:
+			# 	pos_hint: {"center_x": 0.5}
+			# 	text: "Start Weekday"
+			# SpinnerC:
+			# 	pos_hint: {"center_x": 0.5}
+			# 	id: spinnerWD
+			# 	typ: "wd"
+			# 	text: "-  [i]select[/i]  -"
+			# 	values: "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+			# 	on_text: root.spinner_clicked(spinnerWD.text, spinnerWD.typ)
+
+			FloatLayout: # pusher down
+
+		FloatLayout: # puffer
+
+        BoxLayout:
+            size_hint: 1, None
+            height: dp(45)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            spacing: 20
+            ButtonSmall1:
+                text: "Close"
+                on_release: root.dismiss()
+
+
+
+
+<PopupWindows>:
+    title: "Window Ratio"
+    size_hint: None, None
+    size: dp(900), dp(800)
+    auto_dismiss: False
+    BoxLayout:
+    	orientation: "vertical"
+	    BoxLayoutStand:
+	        orientation: "horizontal"
+	        size_hint: 1, None
+	        height: dp(650)
+	    	BoxLayoutStandLine:	
+	    		orientation: "vertical"
+	    		size_hint: None, 1
+	    		width: dp(450)
+
+	    		FloatLayout: # puffer
+
+	    		# caption
+	    		BoxLayout: 
+	    			orientation: "horizontal"
+	    			size_hint: 1, None
+	    			height: dp(30)
+	    			Label:
+	    				size_hint: 0.5, None
+	    				text: "Percent of Wall"
+	    			Label:
+	    				size_hint: 0.5, None
+	    				text: "Dimensions"
+
+
+
+				# container for wall box
+	    		BoxLayout:
+	    			spacing: dp(20)
+	    			orientation: "horizontal"
+	    			size_hint: 1, None
+	    			height: dp(95)
+					BoxLayoutLine_woPad:
+						orientation: "vertical"
+						size_hint: 0.5, None
+						height: dp(90)
+						# LabelSmall1:
+						# 	pos_hint: {"center_x": 0.1}
+						# 	text: "Wall"
+
+						FloatLayout: # puffer
+
+						BoxLayout:
+							orientation: "horizontal"
+							FloatLayout: # pusher right
+
+							BoxLayout:
+								orientation: "vertical"
+								size_hint: 1, None
+								height: dp(50)
+								LabelSmall1:
+									pos_hint: {"center_x": 0.5}
+									text: "Percent"
+								FloatLayout: # puffer middle
+								TeInFixed:
+									pos_hint: {"center_x": 0.5}
+									text: str(round(float(root.win_percent),2))
+									# the_id: "percent"
+									on_text_validate: root.percent_wid_hei(self.text, "percent")									
+								FloatLayout:
+
+							FloatLayout:
+
+						FloatLayout: # pusher down
+
+
+					BoxLayoutLine_woPad:
+						orientation: "vertical"
+						size_hint: 0.5, None
+						height: dp(90)
+						# LabelSmall1:
+						# 	pos_hint: {"center_x": 0.1}
+						# 	text: "Wall"
+
+						FloatLayout: # puffer
+
+						BoxLayout:
+							orientation: "horizontal"
+
+
+							BoxLayout:
+								orientation: "horizontal"
+								BoxLayout:
+									orientation: "vertical"
+									pos_hint: {"center_y": 0.5}
+									size_hint: 0.5, None
+									height: dp(50)
+									FloatLayout: # pusher up
+									LabelSmall1:
+										pos_hint: {"center_x": 0.5}
+										text: "Width (m)"
+									FloatLayout: # puffer middle
+									LabelSmall1:
+										pos_hint: {"center_x": 0.5}
+										text: "Height (m)"									
+									FloatLayout: # pusher down
+
+
+								BoxLayout:
+									orientation: "vertical"
+									pos_hint: {"center_y": 0.5}
+									size_hint: 0.5, None
+									height: dp(50)
+									FloatLayout: # pusher up
+									TeInFixed:
+										pos_hint: {"center_x": 0.5}
+										the_id: "width"
+										text: str(round(float(root.wind_width),2))
+										on_text_validate: root.percent_wid_hei(self.text, self.the_id)	
+									FloatLayout: # puffer middle
+									TeInFixed:
+										pos_hint: {"center_x": 0.5}
+										the_id: "height"
+										text: str(round(float(root.wind_height),2))
+										on_text_validate: root.percent_wid_hei(self.text, self.the_id)								
+									FloatLayout: # pusher down
+						FloatLayout:
+
+
+						FloatLayout:
+					# FloatLayout: # pusher right
+		FloatLayout: # puffer
+
+        BoxLayout:
+            size_hint: 1, None
+            height: dp(45)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            spacing: 20
+            ButtonSmall1:
+                text: "Close"
+                on_release: root.dismiss()
+
+
+<PopupConstr>:
+    title: "Thermal Mass and Insulation"
+    size_hint: None, None
+    size: dp(800), dp(800)
+    auto_dismiss: False
+    BoxLayout:
+    	orientation: "vertical"
+	    pos_hint:{"top": 0.6}
+	    BoxLayoutStand:
+	        orientation: "horizontal"
+	        pos_hint: {"top": 1}
+	        size_hint: 1, None
+	        height: dp(650)
+	    	BoxLayoutStandLine:	
+	    		orientation: "vertical"
+	        	pos_hint: {"center_y": 1}
+	    		size_hint: None, 1
+	    		width: dp(450)
+
+	    		FloatLayout: # puffer
+
+	    		# caption
+	    		BoxLayout: 
+	    			orientation: "horizontal"
+	    			pos_hint:{"top": 1}
+	    			size_hint: 1, None
+	    			height: dp(30)
+	    			Label:
+	        			pos_hint: {"center_y": 1}
+	    				size_hint: 0.7, None
+	    				text: "Construction Type"
+	    			Label:
+	    				pos_hint: {"center_y": 1}
+	    				size_hint: 0.3, None
+	    				text: "U-Value - W/(m²·K)"
+
+
+
+				# container for wall box
+	    		BoxLayout:
+	    			spacing: dp(20)
+	    			orientation: "horizontal"
+	    			size_hint: 1, None
+	    			height: dp(95)
+					BoxLayoutLine_woPad:
+						orientation: "vertical"
+						size_hint: 0.7, None
+						height: dp(90)
+						LabelSmall1:
+							pos_hint: {"center_x": 0.2}
+							text: "Wall"
+
+						FloatLayout: # puffer
+
+						BoxLayout:
+							orientation: "horizontal"
+							FloatLayout: # pusher right
+
+							BoxLayout:
+								orientation: "vertical"
+								size_hint: 1, None
+								height: dp(50)
+								LabelSmall1:
+									pos_hint: {"center_x": 0.5}
+									text: "Light"
+								FloatLayout: # puffer middle
+								CheckBox:
+									pos_hint: {"center_x": 0.5}
+									group: root.wall_constr_group
+									on_release: root.manage_constr(self.group, True, None)
+									state: "down" if root.wall_constr == "light" else "normal"
+							FloatLayout:
+
+							BoxLayout:
+								orientation: "vertical"
+								size_hint: 1, None
+								height: dp(50)
+								LabelSmall1:
+									pos_hint: {"center_x": 0.5}
+									text: "Heavy"
+								FloatLayout: # puffer middle
+								CheckBox:
+									pos_hint: {"center_x": 0.5}
+									group: root.wall_constr_group
+									on_release: root.manage_constr(self.group, False, None)	
+									state: "normal" if root.wall_constr == "light" else "down"
+							FloatLayout: # pusher
+						FloatLayout: # pusher
+					BoxLayoutLine_woPad:
+						orientation: "vertical"
+						size_hint: 0.3, None
+						height: dp(90)						
+
+						FloatLayout: # puffer
+
+						TeInFixed:
+							id: text_u0
+							pos_hint: {"center_x": 0.5}
+							text: str(root.wall_constr_u)
+							on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("text_u0") 
+							on_text_validate: root.manage_constr(root.wall_constr_group, None, self.text, "text_u0")
+
+						FloatLayout:
+
+
+
+				# container for roof box
+	    		BoxLayout:
+	    			spacing: dp(20)
+	    			orientation: "horizontal"
+	    			size_hint: 1, None
+	    			height: dp(95)
+					BoxLayoutLine_woPad:
+						orientation: "vertical"
+						size_hint: 0.7, None
+						height: dp(90)
+						LabelSmall1:
+							pos_hint: {"center_x": 0.2}
+							text: "Roof"
+						FloatLayout: # puffer
+
+						BoxLayout:
+							orientation: "horizontal"
+							FloatLayout: # pusher right
+
+							BoxLayout:
+								orientation: "vertical"
+								size_hint: 1, None
+								height: dp(50)
+								LabelSmall1:
+									pos_hint: {"center_x": 0.5}
+									text: "Light"
+								FloatLayout: # puffer middle
+								CheckBox:
+									pos_hint: {"center_x": 0.5}
+									group: root.roof_constr_group
+									on_release: root.manage_constr(self.group, True, None)
+									state: "down" if root.roof_constr == "light" else "normal"
+							FloatLayout:
+
+							BoxLayout:
+								orientation: "vertical"
+								size_hint: 1, None
+								height: dp(50)
+								LabelSmall1:
+									pos_hint: {"center_x": 0.5}
+									text: "Heavy"
+								FloatLayout: # puffer middle
+								CheckBox:
+									pos_hint: {"center_x": 0.5}
+									group: root.roof_constr_group
+									on_release: root.manage_constr(self.group, False, None)	
+									state: "normal" if root.roof_constr == "light" else "down"
+							FloatLayout: # pusher
+						FloatLayout: # pusher
+					BoxLayoutLine_woPad:
+						orientation: "vertical"
+						size_hint: 0.3, None
+						height: dp(90)						
+
+						FloatLayout: # puffer
+
+						TeInFixed:
+							id: text_u1
+							pos_hint: {"center_x": 0.5}
+							text: str(root.roof_constr_u)
+							on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("text_u1") 
+							on_text_validate: root.manage_constr(root.roof_constr_group, None, self.text, "text_u1")
+						FloatLayout:
+
+
+				# container for ground floor box
+	    		BoxLayout:
+	    			spacing: dp(20)
+	    			orientation: "horizontal"
+	    			size_hint: 1, None
+	    			height: dp(95)
+					BoxLayoutLine_woPad:
+						orientation: "vertical"
+						size_hint: 0.7, None
+						height: dp(90)
+						LabelSmall1:
+							pos_hint: {"center_x": 0.2}
+							text: "Floor"
+						FloatLayout: # puffer
+
+						BoxLayout:
+							orientation: "horizontal"
+							FloatLayout: # pusher right
+
+							BoxLayout:
+								orientation: "vertical"
+								size_hint: 1, None
+								height: dp(50)
+								LabelSmall1:
+									pos_hint: {"center_x": 0.5}
+									text: "Light"
+								FloatLayout: # puffer middle
+								CheckBox:
+									pos_hint: {"center_x": 0.5}
+									group: root.floor_constr_group
+									on_release: root.manage_constr(self.group, True, None)
+									state: "down" if root.gr_floor_constr == "light" else "normal"
+							FloatLayout:
+
+							BoxLayout:
+								orientation: "vertical"
+								size_hint: 1, None
+								height: dp(50)
+								LabelSmall1:
+									pos_hint: {"center_x": 0.5}
+									text: "Heavy"
+								FloatLayout: # puffer middle
+								CheckBox:
+									pos_hint: {"center_x": 0.5}
+									group: root.floor_constr_group
+									on_release: root.manage_constr(self.group, False, None)	
+									state: "normal" if root.gr_floor_constr == "light" else "down"
+							FloatLayout: # pusher
+						FloatLayout: # pusher
+					BoxLayoutLine_woPad:
+						orientation: "vertical"
+						size_hint: 0.3, None
+						height: dp(90)						
+
+						FloatLayout: # puffer
+
+						TeInFixed:
+							id: text_u2
+							pos_hint: {"center_x": 0.5}
+							text: str(root.gr_floor_constr_u)
+							on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("text_u2") 
+							on_text_validate: root.manage_constr(root.floor_constr_group, None, self.text, "text_u2")
+						FloatLayout:
+
+
+
+				# container for interior wall box
+	    		BoxLayout:
+	    			spacing: dp(20)
+	    			orientation: "horizontal"
+	    			size_hint: 1, None
+	    			height: dp(95)
+					BoxLayoutLine_woPad:
+						orientation: "vertical"
+						size_hint: 0.7, None
+						height: dp(90)
+						LabelSmall1:
+							pos_hint: {"center_x": 0.2}
+							text: "Interior Walls"
+						FloatLayout: # puffer
+
+						BoxLayout:
+							orientation: "horizontal"
+							FloatLayout: # pusher right
+
+							BoxLayout:
+								orientation: "vertical"
+								size_hint: 1, None
+								height: dp(50)
+								LabelSmall1:
+									pos_hint: {"center_x": 0.5}
+									text: "Light"
+								FloatLayout: # puffer middle
+								CheckBox:
+									pos_hint: {"center_x": 0.5}
+									group: root.int_wall_constr_group
+									on_release: root.manage_constr(self.group, True, None)
+									state: "down" if root.int_wall_constr == "light" else "normal"
+							FloatLayout:
+
+							BoxLayout:
+								orientation: "vertical"
+								size_hint: 1, None
+								height: dp(50)
+								LabelSmall1:
+									pos_hint: {"center_x": 0.5}
+									text: "Heavy"
+								FloatLayout: # puffer middle
+								CheckBox:
+									pos_hint: {"center_x": 0.5}
+									group: root.int_wall_constr_group
+									on_release: root.manage_constr(self.group, False, None)	
+									state: "normal" if root.int_wall_constr == "light" else "down"
+							FloatLayout: # pusher
+						FloatLayout: # pusher
+					BoxLayout:
+						orientation: "vertical"
+						size_hint: 0.3, None
+						height: dp(90)						
+						# LabelSmall1:
+						# 	pos_hint: {"center_x": 0.35}
+						# 	text: "U-Value"
+						FloatLayout: # puffer
+
+				FloatLayout:
+
+		        BoxLayout:
+		            size_hint: 1, None
+		            height: dp(45)
+		            spacing: 20
+		            # pos_hint: {"top": 1}
+		            ButtonSmall1:
+		                text: "Close"
+		                on_release: root.dismiss()
+
+
+
+			BoxLayoutStandLine:	
+				pos_hint: {"center_y": 1}
+	    		orientation: "vertical"
+	    		size_hint: None, 1
+	    		width: dp(300)
+
+
+	    		# caption
+	    		BoxLayout:
+	    			pos_hint: {"top":1}
+	    			orientation: "horizontal"
+	    			size_hint: 1, None
+	    			height: dp(30)
+	    			Label:
+	    				pos_hint: {"center_y": 0.5}
+	    				size_hint: 0.7, None
+	    				text: "Window Construction"
+
+
+				BoxLayoutLine_woPad:
+					orientation: "vertical"
+					size_hint: 1, None
+					height: dp(60)
+
+					FloatLayout: # pusher up
+
+					SpinnerD:
+						pos_hint: {"center_x": 0.5}
+						text: "Triple + Thermal Coating"
+						values: "Double Glazing", "Double + Thermal Coating", "Triple + Thermal Coating", "Single Glazing"
+						on_text: root.glazing_type(self.text)
+					FloatLayout:
+
+    			Label: # info panel
+    				markup: True
+    				size_hint: None, None
+    				width: dp(260)
+    				height: dp(350)
+					pos_hint: {"center_x": 0.5}
+					font_size: dp(14)
+    				text: 
+    					"[i]Heavy or Light: \n \
+    					Choose heavy construction \n \
+    					(in this case insulated concrete) \n \
+    					to increase thermal mass of your \n \
+    					building. Thermal mass can help \n \
+    					keeping the temperature lower, as it \n \
+    					works as a thermal storage. \n \
+    					Example: Cold air cools the concrete \n \
+    					floor of a building during night, \n \
+    					when windows are open, and releases \n \
+    					the coolness during the day, when \n \
+    					windows are closed. \n \
+    					\n \
+    					U-Value: \n \
+    					The default U-Value of 0.13 W/m2*K \n \
+    					can be usually used, except if you \n \
+    					want to consider less insulated \n \
+    					scenarios, such as older buildings.[i]"
+    				color: 0.7, 0.7, 0.7,1
+    				halign: "left"
+    				canvas.before:
+				        Color:
+				            rgba: .5, .5, .49, 1
+				        Line:
+				        	width: 1
+				        	rectangle: self.x, self.y, self.width, self.height
+
+
+					FloatLayout: # pusher
+				FloatLayout: # pusher down
+
+
+
+<ScreenLayout>:
+	#size_hint: 1, .2
+	ScrMng:
+		id:screenm
+
+<ScreenLayout_2>:
+	#size_hint: 1, .2
+	ScrMng_2:
+		id:screenm_2
+
+
+
+<Screen1>:
+	name: "screen1"
+	BoxLayout:
+		orientation: "horizontal"
+		BoxLayoutStand_woLine:
+			orientation: "vertical"
+			size: dp(1000), dp(900)
+			BoxLayoutStand_woLine:
+				orientation: "horizontal"
+				size: dp(300), dp(80)
+				LabelSmall1:
+					size_hint: None, None
+					size: dp(250), dp(40)
+					id: label_angle_slider
+					text: "North angle:"
+					int_ang: 0
+				Slider:
+					size_hint: None, None
+					size: dp(250), dp(40)
+					id: angle_slider
+					min: 0
+					max: 360
+					step: 1
+					pos_hint: {"center_x": .5}
+					on_value: 
+						root.slide_angle(*args)
+
+			FloatLayout:
+				id: float_screen2
+				size_hint: None, None
+				size: dp(950), dp(800)
+
+				BoxLayoutStand_woLine:
+					id: screen_2_1
+					size_hint: None, None
+					size: dp(900), dp(800)
+					pos: float_screen2.pos
+					spacing: dp(10)
+
+
+					Image:
+						size: screen_2_1.size
+						pos: screen_2_1.pos
+						source: "images/compass.png"
+						allow_stretch: True 
+						keep_ratio: True
+				    	canvas.before:
+				    		PushMatrix
+							Rotate:
+								angle: root.compass_angle
+								axis: 0, 0, 1
+								origin: self.center
+						canvas.after:
+							PopMatrix
+
+				BoxLayout:
+
+					id: float2
+					size_hint: None, None
+					size: dp(900), dp(800)
+					pos: float_screen2.pos
+					spacing: dp(10)
+			    	canvas:
+						Color:
+							rgba: .25, .2, .35, 1
+						Line:
+							width: 4
+							rectangle: 
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale), \
+								float2.y + 0.5*float2.height + (dp(200) - root.rec_0_wid * root.canvas_scale), root.rec_0_len * root.canvas_scale, root.rec_0_wid * root.canvas_scale)
+
+						# window 0
+						Color:
+							rgba: .25, .5, .7, 1
+						Line:
+							width: 4
+							rectangle: 
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) + \
+								((root.rec_0_len * root.canvas_scale - (root.rec_0_len * root.canvas_scale * root.window_0_rat/100)) * 0.5), \
+								float2.y + 0.5*float2.height + dp(200), root.rec_0_len * root.canvas_scale * root.window_0_rat/100,  0)
+
+
+
+		# Layout containing inputs for room dimensions etc
+		BoxLayoutStandLine:
+			orientation: 'vertical'
+			pos_hint: {"center_x": 0.5}
+			size_hint: None, 1
+			width: dp(800)
+
+
+
+			BoxLayoutStandLine:
+				orientation: 'horizontal'
+				pos_hint: {"center_y": 1}
+				size_hint: 1, None
+				height: 200
+				# box one for width and length of room 0
+
+
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(120)
+					FloatLayout:
+					Label:
+						size_hint: None, None
+						width: self.width
+						height: dp(60)
+						id: room0_big
+						pos_hint: {"center_y": 0}
+						text: "Room 1"
+						font_size: 24
+					FloatLayout:
+
+
+
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(140)
+					FloatLayout:
+					LabelSmall1:
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: "Length (m):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: "Width (m):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: "Height (m):"	
+						text_size: self.size
+						halign: "left"
+					FloatLayout:
+
+
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(100)
+					FloatLayout:
+					TeInFixed:
+						id: textlen_0
+						pos_hint: {"center_x": 0}
+						text: root.text_0_len
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("textlen_0") 
+						on_text_validate: root.create_box_room(self.text, "length", "textlen_0")
+					TeInFixed:
+						id: textwid_0
+						pos_hint: {"center_x": 0}
+						text: root.text_0_wid
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("textwid_0") 
+						on_text_validate: root.create_box_room(self.text, "width", "textwid_0")
+					TeInFixed:
+						id: texthei_0
+						pos_hint: {"center_x": 0}
+						text: root.text_0_hei
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("texthei_0") 
+						on_text_validate: root.create_box_room(self.text, "height", "texthei_0")
+
+					FloatLayout:
+
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(190)
+					FloatLayout:
+					LabelSmall1:
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: "Window (%) of Wall:"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1: # Placeholder
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: " "
+						text_size: self.size
+						halign: "left"
+					LabelSmall1: # Placeholder
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: " "
+						text_size: self.size
+						halign: "left"
+					FloatLayout:
+
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(100)
+					FloatLayout:
+					TeInFixed:
+						id: window_0_rat
+						pos_hint: {"center_x": 0}
+						text: str(root.window_0_rat)
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("window_0_rat") 
+						on_text_validate: root.window_setter(self.text, "width", "window_0_rat")
+					LabelSmall1: # Placeholder
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: " "
+						text_size: self.size
+						halign: "left"
+					LabelSmall1: # Placeholder
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: " "
+						text_size: self.size
+						halign: "left"
+					FloatLayout:
+			FloatLayout:
+
+
+
+
+<Screen2>:
+	name: "screen2"
+	BoxLayout:
+		orientation: "horizontal"
+
+		# layout containing kivy rooms and graphics
+
+		BoxLayoutStand_woLine:
+			orientation: "vertical"
+			size: dp(1000), dp(900)
+			BoxLayoutStand_woLine:
+				orientation: "horizontal"
+				size: dp(300), dp(80)
+				LabelSmall1:
+					size_hint: None, None
+					size: dp(250), dp(40)
+					id: label_angle_slider
+					text: "North angle:"
+					int_ang: 0
+				Slider:
+					size_hint: None, None
+					size: dp(250), dp(40)
+					id: angle_slider
+					min: 0
+					max: 360
+					step: 1
+					pos_hint: {"center_x": .5}
+					on_value: 
+						root.slide_angle(*args)
+
+			FloatLayout:
+				id: float_screen2
+				size_hint: None, None
+				size: dp(950), dp(800)
+
+				BoxLayoutStand_woLine:
+					id: screen_2_1
+					size_hint: None, None
+					size: dp(900), dp(800)
+					pos: float_screen2.pos
+					spacing: dp(10)
+
+
+					Image:
+						size: screen_2_1.size
+						pos: screen_2_1.pos
+						source: "images/compass.png"
+						allow_stretch: True 
+						keep_ratio: True
+				    	canvas.before:
+				    		PushMatrix
+							Rotate:
+								angle: root.compass_angle
+								axis: 0, 0, 1
+								origin: self.center
+						canvas.after:
+							PopMatrix
+
+				BoxLayout:
+
+					id: float2
+					size_hint: None, None
+					size: dp(900), dp(800)
+					pos: float_screen2.pos
+					spacing: dp(10)
+			    	canvas:
+						Color:
+							rgba: .25, .2, .35, 1
+						Line:
+							width: 4
+							rectangle: 
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale), \
+								float2.y + 0.5*float2.height + (dp(200) - root.rec_0_wid * root.canvas_scale), root.rec_0_len * root.canvas_scale, root.rec_0_wid * root.canvas_scale)
+						Color:
+							rgba: .25, .2, .35, 1
+						Line:
+							width: 4
+							rectangle: 
+								(float2.x + 0.5*float2.width - root.r_m_l_1 * root.canvas_scale - (root.rec_0_len * 0.5 * root.canvas_scale), \
+								float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale + (dp(200) - root.rec_1_wid * root.canvas_scale), \
+								root.rec_1_len * root.canvas_scale, root.rec_1_wid * root.canvas_scale)
+						Color:
+							rgba: .25, .2, .35, 1
+						Line:
+							width: 4
+							rectangle: 
+								(float2.x + 0.5*float2.width - root.r_m_l_1 * root.canvas_scale - root.r_m_l_2 * root.canvas_scale - \
+								(root.rec_0_len * 0.5 * root.canvas_scale), float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale - root.rec_1_wid * root.canvas_scale + (dp(200) - \
+								root.rec_2_wid * root.canvas_scale), root.rec_2_len * root.canvas_scale, root.rec_2_wid * root.canvas_scale)
+
+
+						# window 0
+						Color:
+							rgba: .25, .5, .7, 1
+						Line:
+							width: 4
+							rectangle: 
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) + \
+								((root.rec_0_len * root.canvas_scale - (root.rec_0_len * root.canvas_scale * root.window_0_rat/100)) * 0.5), \
+								float2.y + 0.5*float2.height + dp(200), root.rec_0_len * root.canvas_scale * root.window_0_rat/100,  0)
+
+						# window 1
+						Color:
+							rgba: .25, .5, .7, 1
+						Line:
+							width: 4
+							rectangle:
+								(0, 0, 0, 0) if root.rec_1_wid is not 0 else \
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) + \
+								((root.rec_0_len * root.canvas_scale - (root.rec_0_len * root.canvas_scale * root.window_1_rat/100)) * 0.5), \
+								float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale + dp(200), root.rec_0_len * root.canvas_scale * root.window_1_rat/100,  0)
+
+						# interior window 0
+						Color:
+							rgba: .45, .45, .65, 1
+						Line:
+							width: 4
+							rectangle: 
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) + \
+								((root.rec_0_len * root.canvas_scale - (root.rec_0_len * root.canvas_scale * root.int_window_0_rat/100)) * 0.5), \
+								float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale + dp(200), \
+								root.rec_0_len * root.canvas_scale * root.int_window_0_rat/100,  0) if root.rec_0_len < root.rec_1_len else \
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) - \
+								root.r_m_l_1 * root.canvas_scale + \
+								((root.rec_1_len * root.canvas_scale - (root.rec_1_len * root.canvas_scale * root.int_window_0_rat/100)) * 0.5), \
+								float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale + dp(200), \
+								root.rec_1_len * root.canvas_scale * root.int_window_0_rat/100,  0)
+
+						# window 2
+						Color:
+							rgba: .25, .5, .7, 1
+						Line:
+							width: 4
+							rectangle:
+								(0, 0, 0, 0) if root.rec_2_wid is not 0 else \
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) - \
+								root.r_m_l_1 * root.canvas_scale + \
+								((root.rec_1_len * root.canvas_scale - (root.rec_1_len * root.canvas_scale * root.window_2_rat/100)) * 0.5), \
+								float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale - root.rec_1_wid * root.canvas_scale + dp(200), \
+								root.rec_1_len * root.canvas_scale * root.window_2_rat/100,  0)
+
+						# interior window 1
+						Color:
+							rgba: .45, .45, .65, 1
+						Line:
+							width: 4
+							rectangle:
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) - \
+								root.r_m_l_1 * root.canvas_scale + \
+								((root.rec_1_len * root.canvas_scale - (root.rec_1_len * root.canvas_scale * root.int_window_1_rat/100)) * 0.5), \
+								float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale + dp(200) - root.rec_1_wid * root.canvas_scale, \
+								root.rec_1_len * root.canvas_scale * root.int_window_1_rat/100,  0) \
+								if root.rec_1_len < root.rec_2_len else \
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) - \
+								root.r_m_l_1 * root.canvas_scale - root.r_m_l_2 * root.canvas_scale + \
+								((root.rec_2_len * root.canvas_scale - (root.rec_2_len * root.canvas_scale * root.int_window_1_rat/100)) * 0.5), \
+								float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale + dp(200) - root.rec_1_wid * root.canvas_scale, \
+								root.rec_2_len * root.canvas_scale * root.int_window_1_rat/100,  0)
+						# window 3
+						Color:
+							rgba: .25, .5, .7, 1
+						Line:
+							width: 4
+							rectangle:
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) - \
+								root.r_m_l_1 * root.canvas_scale - root.r_m_l_2 * root.canvas_scale + \
+								((root.rec_2_len * root.canvas_scale - (root.rec_2_len * root.canvas_scale * root.window_3_rat/100)) * 0.5), \
+								float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale + dp(200) - root.rec_1_wid * root.canvas_scale - root.rec_2_wid * root.canvas_scale, \
+								root.rec_2_len * root.canvas_scale * root.window_3_rat/100,  0)
+
+
+		# Layout containing inputs for room dimensions etc
+		BoxLayoutStandLine:
+			orientation: 'vertical'
+			pos_hint: {"center_x": 0.5}
+			size_hint: None, 1
+			width: dp(800)
+			BoxLayoutStand:
+				orientation: 'horizontal'
+				size_hint: 1, None
+				height: 140
+
+				# height setter for all rooms
+				BoxLayoutStandLine: # 
+					orientation: 'vertical'
+					size_hint: None, None
+					width: dp(300)
+					height: dp(100)
+					LabelSmall1:
+						pos_hint: {"center_x": 0.5}
+						text: "Height of all Rooms (m):"
+					TeInFixed:
+						id: text_height
+						pos_hint: {"center_x": 0.5}
+						text: "3.0"
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("text_height") 
+						on_text_validate: root.create_box_room(self.text, "height", 0, "text_height")
+						disabled: True if root.disabled_0 else False
+
+
+			BoxLayoutStandLine:
+				orientation: 'horizontal'
+				size_hint: 1, None
+				height: 160
+				# box one for width and length of room 0
+				# Placeholder
+
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(100)
+					Label:
+						id: room0_big
+						pos_hint: {"center_y": 1}
+						text: "Room 1"
+						font_size: 24
+
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(100)
+					FloatLayout:
+					LabelSmall1:
+						pos_hint: {"center_x": 1}
+						text: "Length (m):"
+					LabelSmall1:
+						pos_hint: {"center_x": 1}
+						text: "Width (m):"	
+					FloatLayout:				
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(200)
+					FloatLayout:
+					TeInFixed:
+						id: textlen_0
+						pos_hint: {"center_x": 0.5}
+						text: root.text_0
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("textlen_0") 
+						on_text_validate: root.create_box_room(self.text, "length", 0, "textlen_0")
+						disabled: True if root.disabled_0 else False
+					TeInFixed:
+						id: textwid_0
+						pos_hint: {"center_x": 0.5}
+						text: root.text_1
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("textwid_0") 
+						on_text_validate: root.create_box_room(self.text, "width", 0, "textwid_0")
+						disabled: True if root.disabled_0 else False
+					FloatLayout:
+
+				# Placeholder
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(50)
+
+				# button elements
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(400)
+
+					Label:
+						size_hint: None, None
+						size: self.width, dp(40)
+						text: "Window 1 - (%) of Wall:"
+						pos_hint: {"left": 0}
+						text_size: self.size
+						halign: "left"
+
+					TeInFixed:
+						id: text_rat_0
+						text: str(root.window_0_rat)
+						size: self.width, dp(30)
+						halign: "center"
+						pos_hint: {"left": 0}
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("text_rat_0") 
+						on_text_validate: root.window_setter(0, self.text, "text_rat_0")
+						# disabled: True if root.disabled_0 else False
+
+					Label:
+						size_hint: None, None
+						size: self.width, dp(40)
+						pos_hint: {"left": 0}
+						text_size: self.size
+						text: "window 2 - (%) of Wall:"
+						halign: "left"
+
+					TeInFixed:
+						id: text_rat_1
+						text: str(root.window_1_rat)
+						size: self.width, dp(30)
+						pos_hint: {"left": 0}
+						halign: "center"
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("text_rat_1") 
+						on_text_validate: root.window_setter(1, self.text, "text_rat_1")
+						disabled: True if root.disabled_0 else False
+
+
+
+			# button elements
+			BoxLayoutStand:
+				orientation: 'horizontal'
+				size_hint: 1, None
+				height: 70
+				BoxLayoutStand:
+					orientation: "horizontal"
+					size_hint: None, 1
+					width: dp(200)
+					ButtonBig1:
+						size: dp(50), dp(50)
+						pos_hint: {"center_x": 0.5}
+						on_release: root.create_box_room([(root.rec_0_len/root.scale_factor), 10], "both", 1)
+						disabled: True if root.dis_but_0 else True if root.disabled_0 else False
+						Image:
+							source:'images/button_logos/plus.png' if not self.disabled else 'images/button_logos/disabled.png'
+							size: self.parent.size
+					        center_x: self.parent.center_x
+					        center_y: self.parent.center_y
+							allow_stretch: True
+
+					ButtonBig1:
+						size: dp(50), dp(50)
+						pos_hint: {"center_x": 0.5}
+						on_release: root.remove_box_room(1)
+						disabled: True if root.dis_but_0 else False if root.disabled_0 else True
+						Image:
+							source:'images/button_logos/minus.png' if not self.disabled else 'images/button_logos/disabled.png'
+							size: self.parent.size
+					        center_x: self.parent.center_x
+					        center_y: self.parent.center_y
+							allow_stretch: True
+
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: None, 1
+					width: dp(150)
+					BoxLayout:
+						orientation: "horizontal"
+
+						FloatLayout: # pusher left
+
+						ButtonBig1:
+							size: dp(50), dp(50)
+							text: "L"
+							halign: "center"
+							on_release: root.remove_and_add_rml("l", "0_1")
+							disabled: True if root.disabled_1 else False
+
+						ButtonBig1:
+							size: dp(50), dp(50)
+							text: "M"
+							halign: "center"
+							on_release: root.remove_and_add_rml("m", "0_1")
+							disabled: True if root.disabled_1 else False
+
+						ButtonBig1:
+							size: dp(50), dp(50)
+							text: "R"
+							halign: "center"
+							on_release: root.remove_and_add_rml("r", "0_1")
+							disabled: True if root.disabled_1 else False
+
+
+
+
+
+			# box one for width and height of room 1
+			BoxLayoutStandLine:
+				orientation: 'horizontal'
+				size_hint: 1, None
+				height: 160
+
+				# Placeholder
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(100)
+					Label:
+						id: room1_big
+						pos_hint: {"center_y": 1}
+						font_size: 24
+
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(100)
+					FloatLayout:
+					LabelSmall1:
+						id: length1
+						pos_hint: {"center_x": 1}
+						text: "Length (m):"
+					LabelSmall1:
+						id: width1
+						pos_hint: {"center_x": 1}
+						text: "Width (m):"
+					FloatLayout:			
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(200)
+					FloatLayout:
+					TeInFixed:
+						id: textlen_1
+						pos_hint: {"center_x": 0.5}
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("textlen_1") 
+						on_text_validate: root.create_box_room(self.text, "length", 1, "textlen_1")
+						disabled: True if root.disabled_1 else False
+					TeInFixed:
+						id: textwid_1
+						pos_hint: {"center_x": 0.5}
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("textwid_1") 
+						on_text_validate: root.create_box_room(self.text, "width", 1, "textwid_1")
+						disabled: True if root.disabled_1 else False
+					FloatLayout:
+
+
+
+
+
+						FloatLayout: # pusher right	
+				# Placeholder
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(50)
+
+				# button elements
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(300)
+
+
+
+					Label:
+						size_hint: None, None
+						size: self.width, dp(40)
+						pos_hint: {"left": 0}
+						text_size: self.size
+						text: "Opening 1 - (%) of Wall:"
+						halign: "left"
+
+					TeInFixed:
+						id: text_inrat_0
+						size: self.width, dp(30)
+						pos_hint: {"left": 0}
+						halign: "center"
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("text_inrat_0") 
+						on_text_validate: root.interior_window_setter(0, self.text, "text_inrat_0")
+						disabled: True if root.disabled_1 else False
+					Label:
+						size_hint: None, None
+						size: self.width, dp(40)
+						text: "Window 3 - (%) of Wall:"
+						pos_hint: {"left": 0}
+						text_size: self.size
+						halign: "left"
+
+					TeInFixed:
+						id: text_rat_2
+						size: self.width, dp(30)
+						halign: "center"
+						pos_hint: {"left": 0}
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("text_rat_2") 
+						on_text_validate: root.window_setter(2, self.text, "text_rat_2")
+						disabled: True if root.disabled_1 else False
+
+
+				FloatLayout: # puffer
+
+			# button elements
+			BoxLayoutStand:
+				orientation: 'horizontal'
+				size_hint: 1, None
+				height: 70
+				BoxLayoutStand:
+					orientation: "horizontal"
+					size_hint: None, 1
+					width: dp(200)
+					ButtonBig1:
+						size: dp(50), dp(50)
+						pos_hint: {"center_x": 0.5}
+						source:'images/button_logos/plus.png'
+						on_release: root.create_box_room([(root.rec_1_len/root.scale_factor), 10], "both", 2)
+						disabled: True if root.dis_but_1 else True if root.disabled_1 else False
+						Image:
+							source:'images/button_logos/plus.png' if not self.disabled else 'images/button_logos/disabled.png'
+							size: self.parent.size
+					        center_x: self.parent.center_x
+					        center_y: self.parent.center_y
+							allow_stretch: True
+
+					ButtonBig1:
+						size: dp(50), dp(50)
+						pos_hint: {"center_x": 0.5}
+						on_release: root.remove_box_room(2)
+						disabled: True if root.dis_but_1 else False if root.disabled_1 else True
+						Image:
+							source:'images/button_logos/minus.png' if not self.disabled else 'images/button_logos/disabled.png'
+							size: self.parent.size
+					        center_x: self.parent.center_x
+					        center_y: self.parent.center_y
+							allow_stretch: True
+
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: None, 1
+					width: dp(150)
+					BoxLayout:
+						orientation: "horizontal"
+
+						FloatLayout: # pusher left
+
+						ButtonBig1:
+							size: dp(50), dp(50)
+							text: "L"
+							halign: "center"
+							on_release: root.remove_and_add_rml("l", "1_2")
+							disabled: True if root.disabled_2 else False
+
+						ButtonBig1:
+							size: dp(50), dp(50)
+							text: "M"
+							halign: "center"
+							on_release: root.remove_and_add_rml("m", "1_2")
+							disabled: True if root.disabled_2 else False
+
+						ButtonBig1:
+							size: dp(50), dp(50)
+							text: "R"
+							halign: "center"
+							on_release: root.remove_and_add_rml("r", "1_2")
+							disabled: True if root.disabled_2 else False
+
+
+
+			# box one for width and height of room 2
+			BoxLayoutStandLine:
+				orientation: 'horizontal'
+				size_hint: 1, None
+				height: 160
+
+				# Placeholder
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(100)
+					Label:
+						id: room2_big
+						pos_hint: {"center_y": 1}
+						font_size: 24
+
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(100)
+					FloatLayout:
+					LabelSmall1:
+						pos_hint: {"center_x": 1}
+						text: "Length (m):"
+					LabelSmall1:
+						pos_hint: {"center_x": 1}
+						text: "Width (m):"
+					FloatLayout:
+
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(200)
+					FloatLayout:
+					TeInFixed:
+						id: textlen_2
+						pos_hint: {"center_x": 0.5}
+						text: " "
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("textlen_2") 
+						on_text_validate: root.create_box_room(self.text, "length", 2, "textlen_2")
+						disabled: True if root.disabled_2 else False
+					TeInFixed:
+						id: textwid_2
+						pos_hint: {"center_x": 0.5}
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("textwid_2") 
+						on_text_validate: root.create_box_room(self.text, "width", 2, "textwid_2")
+						disabled: True if root.disabled_2 else False
+					FloatLayout:
+
+
+
+				# Placeholder
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(50)
+
+				# button elements
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(300)
+
+
+
+					Label:
+						size_hint: None, None
+						size: self.width, dp(40)
+						pos_hint: {"left": 0}
+						text_size: self.size
+						text: "Opening 2 - (%) of Wall:"
+						halign: "left"
+
+					TeInFixed:
+						id: text_inrat_1
+						size: self.width, dp(30)
+						pos_hint: {"left": 0}
+						halign: "center"
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("text_inrat_1") 
+						on_text_validate: root.interior_window_setter(1, self.text, "text_inrat_1")
+						disabled: True if root.disabled_2 else False
+					Label:
+						size_hint: None, None
+						size: self.width, dp(40)
+						text_size: self.size
+						text: "Window 4 - (%) of Wall:"
+						pos_hint: {"left": 0}
+						text_size: self.size
+						halign: "left"
+
+					TeInFixed:
+						id: text_rat_3
+						size: self.width, dp(30)
+						halign: "center"
+						pos_hint: {"left": 0}
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("text_rat_3") 
+						on_text_validate: root.window_setter(3, self.text, "text_rat_3")
+						disabled: True if root.disabled_2 else False
+
+
+
+						FloatLayout: # pusher right	
+				FloatLayout: # puffer
+
+
+		
+
+
+<Screen3>:
+	name: "screen3"
+	BoxLayout:
+		orientation: "horizontal"
+
+		# layout containing kivy rooms and graphics
+
+		BoxLayoutStand_woLine:
+			orientation: "vertical"
+			size: dp(1000), dp(900)
+			BoxLayoutStand_woLine:
+				orientation: "horizontal"
+				size: dp(300), dp(80)
+				LabelSmall1:
+					size_hint: None, None
+					size: dp(250), dp(40)
+					id: label_angle_slider
+					text: "North angle:"
+					int_ang: 0
+				Slider:
+					size_hint: None, None
+					size: dp(250), dp(40)
+					id: angle_slider
+					min: 0
+					max: 360
+					step: 1
+					pos_hint: {"center_x": .5}
+					on_value: 
+						root.slide_angle(*args)
+
+			FloatLayout:
+				id: float_screen2
+				size_hint: None, None
+				size: dp(950), dp(800)
+
+				BoxLayoutStand_woLine:
+					id: screen_2_1
+					size_hint: None, None
+					size: dp(900), dp(800)
+					pos: float_screen2.pos
+					spacing: dp(10)
+
+
+					Image:
+						size: screen_2_1.size
+						pos: screen_2_1.pos
+						source: "images/compass.png"
+						allow_stretch: True 
+						keep_ratio: True
+				    	canvas.before:
+				    		PushMatrix
+							Rotate:
+								angle: root.compass_angle
+								axis: 0, 0, 1
+								origin: self.center
+						canvas.after:
+							PopMatrix
+
+				BoxLayout:
+
+					id: float2
+					size_hint: None, None
+					size: dp(900), dp(800)
+					pos: float_screen2.pos
+					spacing: dp(10)
+			    	canvas:
+						Color:
+							rgba: .25, .2, .35, 1
+						Line:
+							width: 4
+							rectangle: 
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale), \
+								float2.y + 0.5*float2.height + (dp(200) - root.rec_0_wid * root.canvas_scale), root.rec_0_len * root.canvas_scale, root.rec_0_wid * root.canvas_scale)
+						Color:
+							rgba: .25, .2, .35, 1
+						Line:
+							width: 4
+							rectangle: 
+								(float2.x + 0.5*float2.width - root.r_m_l_1 * root.canvas_scale - (root.rec_0_len * 0.5 * root.canvas_scale), \
+								float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale + (dp(200) - root.rec_1_wid * root.canvas_scale), \
+								root.rec_1_len * root.canvas_scale, root.rec_1_wid * root.canvas_scale)
+
+						# window 0
+						Color:
+							rgba: .5, .2, .5, 1
+						Line:
+							width: 4
+							rectangle: 
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) + \
+								((root.rec_0_len * root.canvas_scale - (root.rec_0_len * root.canvas_scale * root.window_0_rat_wid/100)) * 0.5), \
+								float2.y + 0.5*float2.height + dp(200), root.rec_0_len * root.canvas_scale * root.window_0_rat_wid/100,  0)
+
+						# window 1
+						Color:
+							rgba: .25, .5, .7, 1
+						Line:
+							width: 4
+							rectangle:
+								(0, 0, 0, 0) if root.rec_1_wid is not 0 else \
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) + \
+								((root.rec_0_len * root.canvas_scale - (root.rec_0_len * root.canvas_scale * root.window_1_rat_wid/100)) * 0.5), \
+								float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale + dp(200), root.rec_0_len * root.canvas_scale * root.window_1_rat_wid/100,  0)
+
+						# interior window 0
+						Color:
+							rgba: .45, .45, .65, 1
+						Line:
+							width: 4
+							rectangle: 
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) + \
+								((root.rec_0_len * root.canvas_scale - (root.rec_0_len * root.canvas_scale * root.int_window_0_rat_wid/100)) * 0.5), \
+								float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale + dp(200), \
+								root.rec_0_len * root.canvas_scale * root.int_window_0_rat_wid/100,  0) if root.rec_0_len < root.rec_1_len else \
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) - \
+								root.r_m_l_1 * root.canvas_scale + \
+								((root.rec_1_len * root.canvas_scale - (root.rec_1_len * root.canvas_scale * root.int_window_0_rat_wid/100)) * 0.5), \
+								float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale + dp(200), \
+								root.rec_1_len * root.canvas_scale * root.int_window_0_rat_wid/100,  0)
+
+						# window 2
+						Color:
+							rgba: .25, .5, .7, 1
+						Line:
+							width: 4
+							rectangle:
+								(float2.x + 0.5*float2.width - (root.rec_0_len * 0.5 * root.canvas_scale) - \
+								root.r_m_l_1 * root.canvas_scale + \
+								((root.rec_1_len * root.canvas_scale - (root.rec_1_len * root.canvas_scale * root.window_2_rat_wid/100)) * 0.5), \
+								float2.y + 0.5*float2.height - root.rec_0_wid * root.canvas_scale - root.rec_1_wid * root.canvas_scale + dp(200), \
+								root.rec_1_len * root.canvas_scale * root.window_2_rat_wid /100,  0)
+
+		# Layout containing inputs for room dimensions etc
+		BoxLayoutStandLine:
+			id: float_screen3
+			orientation: 'vertical'
+			pos_hint: {"center_x": 0.5}
+			size_hint: None, 1
+			width: dp(800)
+			FloatLayout:
+				orientation: 'horizontal'
+				size_hint: 1, None
+				height: 250
+				size_hint: None, None
+				size: dp(900), dp(800)
+				spacing: dp(10)
+		    	canvas:
+					# ground line
+					Color:
+						rgba: .5, .45, .45, 1
+					Line:
+						width: 5
+						rectangle:
+							(float2.x + 0.5*float2.width - (root.rec_0_wid * 0.5 * root.canvas_hei_scale) + dp(680), \
+							float2.y + 0.5*float2.height + dp(240), \
+							dp(530), 0)
+
+					# room 1
+					Color:
+						rgba: .25, .2, .35, 1
+					Line:
+						width: 4
+						rectangle: 
+							(float2.x + 0.5*float2.width - (root.rec_0_wid * 0.5 * root.canvas_hei_scale) + dp(720), \
+							float2.y + 0.5*float2.height + (root.new_hei * root.scale_factor * root.canvas_hei_scale) + dp(240), root.rec_0_wid * root.canvas_hei_scale, root.rec_0_hei * root.canvas_hei_scale)
+
+					# atrium room
+					Color:
+						rgba: .25, .2, .35, 1
+					Line:
+						width: 4
+						rectangle: 
+							(float2.x + 0.5*float2.width + (root.rec_0_wid * 0.5 * root.canvas_hei_scale) + dp(720), \
+							float2.y + 0.5*float2.height + dp(240), \
+							root.rec_1_wid * root.canvas_hei_scale, root.rec_1_hei * root.canvas_hei_scale)
+
+					# window 0
+					Color:
+						rgba: .5, .2, .5, 1
+					Line:
+						width: 4
+						rectangle: 
+							(float2.x + 0.5*float2.width - (root.rec_0_wid * 0.5 * root.canvas_hei_scale) + dp(720), \
+							float2.y + 0.5*float2.height + (root.new_hei * root.scale_factor * root.canvas_hei_scale) + dp(240) + \
+							((root.rec_0_hei*root.canvas_hei_scale - (root.window_0_rat_hei/100 * root.rec_0_hei*root.canvas_hei_scale)) * root.window_0_offs/100), \
+							0, root.rec_0_hei * root.canvas_hei_scale * root.window_0_rat_hei/100)
+
+					# interior window 0
+					Color:
+						rgba: .45, .45, .65, 1
+					Line:
+						width: 4
+						rectangle: 
+							(0, 0, 0, 0) if root.rec_1_wid is 0 else \
+							(float2.x + 0.5*float2.width - (root.rec_0_wid * 0.5 * root.canvas_hei_scale) + dp(720) + root.rec_0_wid * root.canvas_hei_scale, \
+							float2.y + 0.5*float2.height + (root.new_hei * root.scale_factor * root.canvas_hei_scale) + dp(240) + \
+							((root.rec_0_hei*root.canvas_hei_scale - (root.int_window_0_rat_hei/100 * root.rec_0_hei*root.canvas_hei_scale)) * root.int_window_0_offs/100), \
+							0, root.rec_0_hei * root.canvas_hei_scale * root.int_window_0_rat_hei/100)
+
+					# window 1
+					Color:
+						rgba: .25, .5, .7, 1
+					Line:
+						width: 4
+						rectangle: 
+							(0, 0, 0, 0) if root.rec_1_wid is not 0 else \
+							(float2.x + 0.5*float2.width - (root.rec_0_wid * 0.5 * root.canvas_hei_scale) + dp(720) + root.rec_0_wid * root.canvas_hei_scale, \
+							float2.y + 0.5*float2.height + (root.new_hei * root.scale_factor * root.canvas_hei_scale) + dp(240) + \
+							((root.rec_0_hei*root.canvas_hei_scale - (root.window_1_rat_hei/100 * root.rec_0_hei*root.canvas_hei_scale)) * root.window_1_offs/100), \
+							0, root.rec_0_hei * root.canvas_hei_scale * root.window_1_rat_hei/100)
+
+					# window 2
+					Color:
+						rgba: .25, .5, .7, 1
+					Line:
+						width: 4
+						rectangle:
+							(float2.x + 0.5*float2.width - (root.rec_0_wid * 0.5 * root.canvas_hei_scale) + dp(720) + root.rec_0_wid * root.canvas_hei_scale + root.rec_1_wid * root.canvas_hei_scale, \
+							float2.y + 0.5*float2.height + dp(240) + \
+							((root.rec_1_hei*root.canvas_hei_scale - (root.window_2_rat_hei/100 * root.rec_1_hei*root.canvas_hei_scale)) * root.window_2_offs/100), \
+							0, root.rec_1_hei * root.canvas_hei_scale * root.window_2_rat_hei/100)
+
+
+
+
+
+
+
+			BoxLayout:
+				orientation: 'horizontal'
+				size_hint: 1, None
+				height: 180
+				# box one for width and length of room 0
+
+				FloatLayout:
+
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(120)
+	    			Label: # info panel
+	    				markup: True
+	    				size_hint: None, None
+						size: dp(140), dp(150)
+						pos_hint: {"center_x": 0.5, "top": 1}
+						font_size: dp(14)
+	    				text: 
+	    					"[i]Cross Section: \n \
+	    					Windows are colored \n \
+	    					for orientation \n \
+	    					purposes only. \n \
+	    					The section may be \n \
+	    					displayed in a \n \
+	    					different scale than \n \
+	    					the floor plan view.[i]"
+	    				color: 0.7, 0.7, 0.7,1
+	    				halign: "left"
+	    				canvas.before:
+					        Color:
+					            rgba: .5, .5, .49, 1
+					        Line:
+					        	width: 1
+					        	rectangle: self.x, self.y, self.width, self.height
+					FloatLayout
+
+				# Placeholder
+				Label:
+					size_hint: None, 1
+					width: dp(40)
+
+
+			FloatLayout:
+
+			BoxLayoutStandLine:
+				orientation: 'horizontal'
+				size_hint: 1, None
+				height: 260
+				# box one for width and length of room 0
+
+
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(120)
+					FloatLayout:
+					Label:
+						size_hint: None, None
+						width: self.width
+						height: dp(60)
+						id: room0_big
+						pos_hint: {"center_y": 1}
+						text: "Room 1"
+						font_size: 24
+
+
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(140)
+					FloatLayout:
+					LabelSmall1:
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: "Length (m):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: "Width (m):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: "Height (m):"	
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: "Height offset (%):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1: # placeholder
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: " "
+						text_size: self.size
+						halign: "left"
+					LabelSmall1: # placeholder
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: " "
+						text_size: self.size
+						halign: "left"
+					FloatLayout:
+
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(100)
+					FloatLayout:
+					TeInFixed:
+						id: textlen_0
+						pos_hint: {"center_x": 0}
+						text: root.text_0_len
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("textlen_0") 
+						on_text_validate: root.create_box_room(self.text, "length", 0, "textlen_0")
+						disabled: True if root.disabled_0 else False
+					TeInFixed:
+						id: textwid_0
+						pos_hint: {"center_x": 0}
+						text: root.text_0_wid
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("textwid_0") 
+						on_text_validate: root.create_box_room(self.text, "width", 0, "textwid_0")
+						disabled: True if root.disabled_0 else False
+					TeInFixed:
+						id: texthei_0
+						pos_hint: {"center_x": 0}
+						text: root.text_0_hei
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("texthei_0") 
+						on_text_validate: root.create_box_room(self.text, "height", 0, "texthei_0")
+						disabled: True if root.disabled_0 else False
+					TeInFixed:
+						id: texthei_per_0
+						pos_hint: {"center_x": 0}
+						text: root.text_0_off
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("texthei_per_0") 
+						on_text_validate: root.remove_and_add(self.text, "texthei_per_0")
+						disabled: True if root.disabled_1 else False
+					LabelSmall1: # placeholder
+						width: dp(80)
+						pos_hint: {"center_x": 0}
+						text: " "
+						text_size: self.size
+						halign: "left"
+					LabelSmall1: # placeholder
+						width: dp(80)
+						pos_hint: {"center_x": 0}
+						text: " "
+						text_size: self.size
+						halign: "left"
+
+					FloatLayout:
+
+				# # Placeholder
+				# BoxLayout:
+				# 	orientation: 'vertical'
+				# 	size_hint: None, 1
+				# 	width: dp(20)
+
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(190)
+					FloatLayout:
+					LabelSmall1:
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: "Window 1 - Width (%):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: "Window 1 - Height (%):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: "Window 1 - Offset (%):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: "Window 2 - Width (%):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: "Window 2 - Height (%):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: "Window 2 - Offset (%):"
+						text_size: self.size
+						halign: "left"
+					FloatLayout:
+
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(100)
+					FloatLayout:
+					TeInFixed:
+						id: window_0_wid
+						pos_hint: {"center_x": 0}
+						text: str(root.window_0_rat_wid)
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("window_0_wid") 
+						on_text_validate: root.window_setter(0, self.text, "width", "window_0_wid")
+						disabled: False
+					TeInFixed:
+						id: window_0_hei
+						pos_hint: {"center_x": 0}
+						text: str(root.window_0_rat_hei)
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("window_0_hei") 
+						on_text_validate: root.window_setter(0, self.text, "height", "window_0_hei")
+						disabled: False
+					TeInFixed:
+						id: window_0_offs
+						pos_hint: {"center_x": 0}
+						text: str(root.window_0_offs)
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("window_0_offs") 
+						on_text_validate: root.window_setter(0, self.text, "offset", "window_0_offs")
+						disabled: False
+					TeInFixed:
+						id: window_1_wid
+						pos_hint: {"center_x": 0}
+						text: str(root.window_1_rat_wid)
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("window_1_wid") 
+						on_text_validate: root.window_setter(1, self.text, "width", "window_1_wid")
+						disabled: True if root.disabled_0 else False
+					TeInFixed:
+						id: window_1_hei
+						pos_hint: {"center_x": 0}
+						text: str(root.window_1_rat_hei)
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("window_1_hei") 
+						on_text_validate: root.window_setter(1, self.text, "height", "window_1_hei")
+						disabled: True if root.disabled_0 else False
+					TeInFixed:
+						id: window_1_offs
+						pos_hint: {"center_x": 0}
+						text: str(root.window_1_offs)
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("window_1_offs") 
+						on_text_validate: root.window_setter(1, self.text, "offset", "window_1_offs")
+						disabled: True if root.disabled_0 else False
+					FloatLayout:
+
+
+
+			# button elements
+			BoxLayoutStand:
+				orientation: 'horizontal'
+				size_hint: 1, None
+				height: 50
+				BoxLayoutStand:
+					orientation: "horizontal"
+					size_hint: None, 1
+					width: dp(200)
+					ButtonBig1:
+						size: dp(50), dp(50)
+						pos_hint: {"center_x": 0.5}
+						on_release: root.create_box_room([(root.rec_0_len/root.scale_factor*2), 10, root.rec_0_hei/root.scale_factor*2], "all", 1)
+						disabled: True if root.dis_but_0 else True if root.disabled_0 else False
+						Image:
+							source:'images/button_logos/plus.png' if not self.disabled else 'images/button_logos/disabled.png'
+							size: self.parent.size
+					        center_x: self.parent.center_x
+					        center_y: self.parent.center_y
+							allow_stretch: True
+
+					ButtonBig1:
+						size: dp(50), dp(50)
+						pos_hint: {"center_x": 0.5}
+						on_release: root.remove_box_room()
+						disabled: True if root.dis_but_0 else False if root.disabled_0 else True
+						Image:
+							source:'images/button_logos/minus.png' if not self.disabled else 'images/button_logos/disabled.png'
+							size: self.parent.size
+					        center_x: self.parent.center_x
+					        center_y: self.parent.center_y
+							allow_stretch: True
+
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: None, 1
+					width: dp(150)
+					BoxLayout:
+						orientation: "horizontal"
+
+						FloatLayout: # pusher left
+
+						ButtonBig1:
+							size: dp(50), dp(50)
+							text: "L"
+							halign: "center"
+							on_release: root.remove_and_add_rml("l")
+							disabled: True if root.disabled_1 else False
+
+						ButtonBig1:
+							size: dp(50), dp(50)
+							text: "M"
+							halign: "center"
+							on_release: root.remove_and_add_rml("m")
+							disabled: True if root.disabled_1 else False
+
+						ButtonBig1:
+							size: dp(50), dp(50)
+							text: "R"
+							halign: "center"
+							on_release: root.remove_and_add_rml("r")
+							disabled: True if root.disabled_1 else False
+
+
+
+
+
+			# box room 1
+			BoxLayoutStandLine:
+				orientation: 'horizontal'
+				size_hint: 1, None
+				height: 260
+
+				BoxLayout:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(120)
+					FloatLayout:
+					Label:
+						id: room1_big
+						size_hint: None, None
+						width: self.width
+						height: dp(60)
+						pos_hint: {"center_y": 1}
+						font_size: 24
+
+
+
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(140)
+					FloatLayout:
+					LabelSmall1:
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: "Length (m):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: "Width (m):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: "Height (m):"	
+						text_size: self.size
+						halign: "left"
+					LabelSmall1: # placeholder
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: " "
+						text_size: self.size
+						halign: "left"
+					LabelSmall1: # placeholder
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: " "
+						text_size: self.size
+						halign: "left"
+					LabelSmall1: # placeholder
+						width: dp(120)
+						pos_hint: {"center_x": 0.4}
+						text: " "
+						text_size: self.size
+						halign: "left"
+					FloatLayout:
+
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(100)
+					FloatLayout:
+
+					TeInFixed:
+						id: textlen_1
+						pos_hint: {"center_x": 0}
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("textlen_1") 
+						on_text_validate: root.create_box_room(self.text, "length", 1, "textlen_1")
+						disabled: True if root.disabled_1 else False
+					TeInFixed:
+						id: textwid_1
+						pos_hint: {"center_x": 0}
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("textwid_1") 
+						on_text_validate: root.create_box_room(self.text, "width", 1, "textwid_1")
+						disabled: True if root.disabled_1 else False
+					TeInFixed:
+						id: texthei_1
+						pos_hint: {"center_x": 0}
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("texthei_1") 
+						on_text_validate: root.create_box_room(self.text, "height", 1, "texthei_1")
+						disabled: True if root.disabled_1 else False
+					LabelSmall1: # placeholder
+						width: dp(80)
+						pos_hint: {"center_x": 0}
+						text: " "
+						text_size: self.size
+						halign: "left"
+					LabelSmall1: # placeholder
+						width: dp(80)
+						pos_hint: {"center_x": 0}
+						text: " "
+						text_size: self.size
+						halign: "left"
+					LabelSmall1: # placeholder
+						width: dp(80)
+						pos_hint: {"center_x": 0}
+						text: " "
+						text_size: self.size
+						halign: "left"
+					FloatLayout:
+
+
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(190)
+					FloatLayout:
+					LabelSmall1:
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: "Opening Width (%):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: "Opening Height (%):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: "Opening Offset (%):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: "Window 3 - Width (%):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: "Window 3 - Height (%):"
+						text_size: self.size
+						halign: "left"
+					LabelSmall1:
+						width: dp(190)
+						pos_hint: {"center_x": 0.4}
+						text: "Window 3 - Offset (%):"
+						text_size: self.size
+						halign: "left"
+					FloatLayout:
+
+				BoxLayoutStand:
+					orientation: 'vertical'
+					size_hint: None, 1
+					width: dp(100)
+					FloatLayout:
+					TeInFixed:
+						id: int_window_0_wid
+						pos_hint: {"center_x": 0}
+						# text: str(root.int_window_0_rat_wid)
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("int_window_0_wid") 
+						on_text_validate: root.interior_window_setter(self.text, "width", "int_window_0_wid") 
+						disabled: True if root.disabled_1 else False
+					TeInFixed:
+						id: int_window_0_hei
+						pos_hint: {"center_x": 0}
+						# text: str(root.int_window_0_rat_wid)
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("int_window_0_hei") 
+						on_text_validate: root.interior_window_setter(self.text, "height", "int_window_0_hei") 
+						disabled: True if root.disabled_1 else False
+					TeInFixed:
+						id: int_window_0_offs
+						pos_hint: {"center_x": 0}
+						# text: str(root.int_window_0_rat_wid)
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("int_window_0_offs") 
+						on_text_validate: root.interior_window_setter(self.text, "offset", "int_window_0_offs") 
+						disabled: True if root.disabled_1 else False
+					TeInFixed:
+						id: window_2_wid
+						pos_hint: {"center_x": 0}
+						# text: str(root.window_2_rat_wid)
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("window_2_wid") 
+						on_text_validate: root.window_setter(2, self.text, "width", "window_2_wid")
+						disabled: True if root.disabled_1 else False
+					TeInFixed:
+						id: window_2_hei
+						pos_hint: {"center_x": 0}
+						# text: str(root.window_2_rat_hei)
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("window_2_hei") 
+						on_text_validate: root.window_setter(2, self.text, "height", "window_2_hei")
+						disabled: True if root.disabled_1 else False
+					TeInFixed:
+						id: window_2_offs
+						pos_hint: {"center_x": 0}
+						# text: str(root.window_2_offs)
+						on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("window_2_offs") 
+						on_text_validate: root.window_setter(2, self.text, "offset", "window_2_offs")
+						disabled: True if root.disabled_1 else False
+					FloatLayout:
+
+
+
+
+
+
+
+
+<Screen4>:
+	name: "screen4"
+	BoxLayout:
+		orientation: "vertical"
+		padding: [dp(15), dp(15)]
+		spacing: dp(20)
+		# size: self.size 
+		BoxLayoutStandLine:
+			orientation: "horizontal"
+			size_hint: 1, None
+			height: dp(70)
+			pos_hint:{"center_y": 1}
+			LabelBig1_longer:
+				size_hint: None, None
+				size: dp(100), dp(40)
+				pos_hint:{"center_y": 0.5}
+				text: "Results:"
+			ButtonBig1:
+				size_hint: None, None
+				size: dp(200), dp(40)
+				pos_hint:{"center_y": 0.5}
+				text: "Load Results"
+				on_release: root.load_results()
+			ButtonBig1:
+				size_hint: None, None
+				size: dp(200), dp(40)
+				pos_hint:{"center_y": 0.5}
+				text: "Clear Previous"
+				on_release: root.clear_anterior_graphs()
+			Label: # placeholder
+				size_hint: None, None
+				size: dp(50), dp(40)
+			LabelBig1_longer:
+				id: label_results_0
+				size_hint: None, None
+				size: dp(400), dp(40)
+				font_size: dp(20)
+				pos_hint:{"center_y": 0.5}
+				text: " "
+			FloatLayout: # pusher right
+
+		BoxLayout:
+			orientation: "horizontal"
+			BoxLayoutStand:
+				orientation: "vertical"
+				id: resultlayout
+				size_hint: None, None
+				size: dp(1400), dp(750)
+			BoxLayout:
+				orientation: "vertical"
+				id: percent_hot_layout
+
+				LabelBig1:
+					id: label_resume
+					size: dp(230), dp(45)
+					text_size: self.size
+					font_size: dp(28)
+					text: " "
+					halign: "left"
+					pos_hint: {'center_x': .5}
+				LabelBig1:
+					id: label_hot
+					size: dp(210), dp(45)
+					text_size: self.size
+					text: " "
+					halign: "left"
+					pos_hint: {'center_x': .5}
+
+				# LabelBig1:
+				# 	id: label_cold
+				# 	size: dp(210), dp(45)
+				# 	text_size: self.size
+				# 	text: " "
+				# 	halign: "left"
+				# 	pos_hint: {'center_x': .5}
+				LabelBig1:
+					id: label_hot_hours
+					size: dp(210), dp(45)
+					text_size: self.size
+					text: " "
+					halign: "left"
+					pos_hint: {'center_x': .5}
+
+				# LabelBig1:
+				# 	id: label_cold_hours
+				# 	size: dp(210), dp(45)
+				# 	text_size: self.size
+				# 	text: " "
+				# 	halign: "left"
+				# 	pos_hint: {'center_x': .5}
+
+		FloatLayout: # pusher
+
+
+
+<Screen5>:
+	name: "screen5"
+	BoxLayout:
+		orientation: "vertical"
+		padding: [dp(15), dp(15)]
+		spacing: dp(20)
+		# size: self.size 
+		BoxLayoutStandLine:
+			orientation: "horizontal"
+			size_hint: 1, None
+			height: dp(70)
+			pos_hint:{"center_y": 1}
+			LabelBig1_longer:
+				size_hint: None, None
+				size: dp(100), dp(40)
+				pos_hint:{"center_y": 0.5}
+				text: "Results:"
+			ButtonBig1:
+				size_hint: None, None
+				size: dp(200), dp(40)
+				pos_hint:{"center_y": 0.5}
+				text: "Load Results"
+				on_release: root.load_results()
+			ButtonBig1:
+				size_hint: None, None
+				size: dp(200), dp(40)
+				pos_hint:{"center_y": 0.5}
+				text: "Clear Previous"
+				on_release: root.clear_anterior_graphs()
+			Label: # placeholder
+				size_hint: None, None
+				size: dp(50), dp(40)
+			LabelBig1_longer:
+				id: label_results_1
+				size_hint: None, None
+				size: dp(400), dp(40)
+				font_size: dp(20)
+				pos_hint:{"center_y": 0.5}
+				text: " "
+			FloatLayout: # pusher right
+
+		BoxLayout:
+			orientation: "horizontal"
+			BoxLayoutStand:
+				orientation: "vertical"
+				id: resultlayout
+				size_hint: None, None
+				size: dp(1400), dp(750)
+			BoxLayout:
+				orientation: "vertical"
+				id: percent_hot_layout
+
+				LabelBig1:
+					id: label_resume
+					size: dp(230), dp(45)
+					text_size: self.size
+					font_size: dp(28)
+					text: " "
+					halign: "left"
+					pos_hint: {'center_x': .5}
+				LabelBig1:
+					id: label_hot
+					size: dp(210), dp(45)
+					text_size: self.size
+					text: " "
+					halign: "left"
+					pos_hint: {'center_x': .5}
+
+				# LabelBig1:
+				# 	id: label_cold
+				# 	size: dp(210), dp(45)
+				# 	text_size: self.size
+				# 	text: " "
+				# 	halign: "left"
+				# 	pos_hint: {'center_x': .5}
+				LabelBig1:
+					id: label_hot_hours
+					size: dp(210), dp(45)
+					text_size: self.size
+					text: " "
+					halign: "left"
+					pos_hint: {'center_x': .5}
+
+				# LabelBig1:
+				# 	id: label_cold_hours
+				# 	size: dp(210), dp(45)
+				# 	text_size: self.size
+				# 	text: " "
+				# 	halign: "left"
+				# 	pos_hint: {'center_x': .5}
+
+		FloatLayout: # pusher
+
+
+<Screen6>:
+	name: "screen6"
+	BoxLayout:
+		orientation: "vertical"
+		padding: [dp(15), dp(15)]
+		spacing: dp(20)
+		# size: self.size 
+		BoxLayoutStandLine:
+			orientation: "horizontal"
+			size_hint: 1, None
+			height: dp(70)
+			pos_hint:{"center_y": 1}
+			LabelBig1_longer:
+				size_hint: None, None
+				size: dp(100), dp(40)
+				pos_hint:{"center_y": 0.5}
+				text: "Results:"
+			ButtonBig1:
+				size_hint: None, None
+				size: dp(200), dp(40)
+				pos_hint:{"center_y": 0.5}
+				text: "Load Results"
+				on_release: root.load_results()
+			ButtonBig1:
+				size_hint: None, None
+				size: dp(200), dp(40)
+				pos_hint:{"center_y": 0.5}
+				text: "Clear Previous"
+				on_release: root.clear_anterior_graphs()
+			Label: # placeholder
+				size_hint: None, None
+				size: dp(50), dp(40)
+			LabelBig1_longer:
+				id: label_results_2
+				size_hint: None, None
+				size: dp(400), dp(40)
+				font_size: dp(20)
+				pos_hint:{"center_y": 0.5}
+				text: " "
+			FloatLayout: # pusher right
+
+		BoxLayout:
+			orientation: "horizontal"
+			BoxLayoutStand:
+				orientation: "vertical"
+				id: resultlayout
+				size_hint: None, None
+				size: dp(1400), dp(750)
+			BoxLayout:
+				orientation: "vertical"
+				id: percent_hot_layout
+
+				LabelBig1:
+					id: label_resume
+					size: dp(230), dp(45)
+					text_size: self.size
+					font_size: dp(28)
+					text: " "
+					halign: "left"
+					pos_hint: {'center_x': .5}
+				LabelBig1:
+					id: label_hot
+					size: dp(210), dp(45)
+					text_size: self.size
+					text: " "
+					halign: "left"
+					pos_hint: {'center_x': .5}
+
+				# LabelBig1:
+				# 	id: label_cold
+				# 	size: dp(210), dp(45)
+				# 	text_size: self.size
+				# 	text: " "
+				# 	halign: "left"
+				# 	pos_hint: {'center_x': .5}
+				LabelBig1:
+					id: label_hot_hours
+					size: dp(210), dp(45)
+					text_size: self.size
+					text: " "
+					halign: "left"
+					pos_hint: {'center_x': .5}
+
+				# LabelBig1:
+				# 	id: label_cold_hours
+				# 	size: dp(210), dp(45)
+				# 	text_size: self.size
+				# 	text: " "
+				# 	halign: "left"
+				# 	pos_hint: {'center_x': .5}
+
+		FloatLayout: # pusher
+
+<ScrMng_2>:
+
+	transition: FadeTransition()
+
+    Screen4:
+
+	Screen5:
+
+	Screen6:
+
+
+<ScreenTogLayout_2>:
+	orientation: "horizontal"
+	spacing: dp(30)
+	padding: dp(10)
+	#size_hint: 1, 0.6
+	#pos_hint: {'x': 0.0, 'y': 1}
+	canvas.before:
+        Color:
+            rgba: .3, .5, .5, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    ButtonBig1:
+    	text: "Room 1"
+    	# group: "room_123"
+    	size_hint: None, 0.7
+    	width: dp(200)
+		pos_hint: {'center_y': 0.5}
+		background_disabled_normal: ''
+		disabled_color: 1, 1, 1, 1
+        background_normal: ''
+        # background_color:(.37, .3, .5, 1) if self.disabled else (0.3, 0.3, 0.3)
+        background_color:(0, 0, 0, 1) if self.disabled else (0.3, 0.3, 0.3)
+		disabled: True if root.room_result_button == "room1" else False
+		on_release:
+			app.root.ids.sclay_2.ids.screenm_2.current = 'screen4'
+			root.room_result_button_set("room1")
+
+
+    ButtonBig1:
+    	text: "Room 2"
+    	# group: "room_123"
+    	size_hint: None, 0.7
+    	width: dp(200)
+		pos_hint: {'center_y': 0.5}
+		background_disabled_normal: ''
+		disabled_color: 1, 1, 1, 1
+        background_normal: ''
+        # background_color:(.37, .3, .5, 1) if self.disabled else (0.3, 0.3, 0.3)
+        background_color:(0, 0, 0, 1) if self.disabled else (0.3, 0.3, 0.3)
+		disabled: True if root.room_result_button == "room2" else False
+		on_release:
+			app.root.ids.sclay_2.ids.screenm_2.current = 'screen5'
+			root.room_result_button_set("room2")
+
+
+    ButtonBig1:
+    	text: "Room 3"
+    	# group: "room_123"
+    	size_hint: None, 0.7
+    	width: dp(200)
+		pos_hint: {'center_y': 0.5}
+		background_disabled_normal: ''
+		disabled_color: 1, 1, 1, 1
+        background_normal: ''
+        # background_color:(.37, .3, .5, 1) if self.disabled else (0.3, 0.3, 0.3)
+        background_color:(0, 0, 0, 1) if self.disabled else (0.3, 0.3, 0.3)
+		disabled: True if root.room_result_button == "room3" else False
+		on_release:
+			app.root.ids.sclay_2.ids.screenm_2.current = 'screen6'
+			root.room_result_button_set("room3")
+
+	FloatLayout:
+
+
+<ScrMng>:
+
+	transition: FadeTransition()
+
+    Screen1:
+
+	Screen2:
+
+	Screen3:
+
+
+
+
+<ScreenTogLayout@BoxLayout>:
+	orientation: "horizontal"
+	spacing: dp(20)
+	canvas.before:
+        Color:
+            rgba: .3, .5, .5, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+    	text: "Single-Sided"        
+	CheckBox: # Geometry Button
+		active: True
+		group: "ventilation template"
+		pos_hint: {'top':1}
+		#size_hint: 0.9, 1
+		on_state:
+			app.root.ids.sclay.ids.screenm.current = 'screen1'
+			app.root.template_set("one_sided")
+	FloatLayout:
+
+	Label:
+		text: "Cross-Ventilation"
+	CheckBox:
+		group: "ventilation template"
+		pos_hint: {'top':1}
+		on_state:
+			app.root.ids.sclay.ids.screenm.current = 'screen2'
+			app.root.template_set("cross_ventilation")
+
+	FloatLayout:
+
+	Label:
+		text: "Atrium Ventilation"
+	CheckBox:
+		group: "ventilation template"
+		pos_hint: {'top':1}
+		on_state:
+			app.root.ids.sclay.ids.screenm.current = 'screen3'
+			app.root.template_set("atrium_ventilation")
+	FloatLayout:
+####################################################################################
+
+
+<MyLayout>
+	id: mainlay
+	detailtext: detailledness
+
+	canvas.before:
+        Color:
+            rgba: .8, .8, .8, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+	TabbedPanel: # Main Tab panel
+	    id: tabbed1
+	    tab_width: (self.width - dp(5)) / (len(self.tab_list))
+
+	    tab_height: dp(35)
+		do_default_tab: False
+
+		pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+		#pos: root.x + 20, root.top - 20
+
+
+		MainTabI:
+			id: tabp1
+			text: "Ventilation Concept"
+			#size: tabbed1.size
+			#pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			BoxLayout:
+				orientation: "horizontal"
+				BoxLayout:
+					orientation: "vertical"
+					spacing: dp(10)
+					size_hint: None, 1
+					width: dp(150)
+					canvas.before:
+				        Color:
+				            rgba: .3, .3, .4, 1
+				        Rectangle:
+				            pos: self.pos
+				            size: self.size
+
+				    FloatLayout: # pusher up
+
+					ButtonBig1:
+						text: "Construction"
+						size: dp(120), dp(45)
+						pos_hint: {"center_x": 0.5}
+						on_release: root.const_popup_open()
+
+	    			Label: # info panel
+	    				markup: True
+	    				size_hint: None, None
+						size: dp(120), dp(160)
+						pos_hint: {"center_x": 0.5}
+						font_size: dp(14)
+	    				text: "[i]Info: \nChoose between \nlight and heavy \nconstruction \nfor walls, \nroof, etc.[i]"
+	    				color: 0.7, 0.7, 0.7,1
+	    				halign: "left"
+	    				canvas.before:
+					        Color:
+					            rgba: .5, .5, .49, 1
+					        Line:
+					        	width: 1
+					        	rectangle: self.x, self.y, self.width, self.height
+
+					FloatLayout: # pusher down
+
+
+	    			Label:
+	    				size_hint: None, None
+						size: dp(120), dp(45)
+						pos_hint: {"center_x": 0.5}
+	    				text: "Opening Type"
+
+					SpinnerC:
+						size: dp(120), dp(45)
+						pos_hint: {"center_x": 0.5}
+						text: "Hinged"
+						values: "Hinged", "Slided", "Tilt", "Closed"
+						on_text: root.aperture_set(self.text)
+
+	    			Label: # info panel
+	    				markup: True
+	    				size_hint: None, None
+						size: dp(120), dp(160)
+						pos_hint: {"center_x": 0.5}
+						font_size: dp(14)
+	    				text: "[i]Info: \nThe Opening \ntype for all \nexisting \nwindows \nin the project.[i]"
+	    				color: 0.7, 0.7, 0.7,1
+	    				halign: "left"
+	    				canvas.before:
+					        Color:
+					            rgba: .5, .5, .49, 1
+					        Line:
+					        	width: 1
+					        	rectangle: self.x, self.y, self.width, self.height
+
+
+
+					FloatLayout: # pusher down
+
+				BoxLayout:
+					id: boxlay1
+					orientation: 'vertical'
+					ScreenTogLayout:
+						size_hint: 1, None
+						height: dp(80)
+					ScreenLayout:
+						id: sclay
+
+		MainTabI:
+			text: "Simulation"
+			BoxLayout:
+				orientation: "vertical"
+
+				BoxLayout: 
+					padding: [dp(20), dp(15)]
+					spacing: dp(10)
+
+					orientation: 'horizontal'
+
+					# Layout Simulation Period
+					BoxLayoutLine_woPad:
+						orientation: "vertical"
+						size_hint: None, None
+						size: dp(400), dp(400)
+						pos_hint: {"top": 1}
+						padding: dp(20)
+						spacing: dp(10)
+
+						LabelBig1:
+							text: "Simulation Period"
+							pos_hint: {"center_x": 0.5}
+						FloatLayout: # pusher up
+
+						SpinnerC:
+							id: period_spinner
+							size: dp(250), dp(30)
+							pos_hint: {"center_x": 0.5}
+							# text: "Typical Summer Day"
+							text: "Hot Summer Day"
+							values: "Hot Summer Day", "Typical Summer Week", "Hot Summer Week", "Costum Period"
+							on_text: root.period_setter(self.text)
+
+						FloatLayout:
+							size_hint: None, None
+							height: dp(50)
+
+						ButtonBig1:
+							width: dp(250)
+							pos_hint: {"center_x": 0.5}
+							text: "Define Costum Period"
+							on_release: root.period_popup_open()
+							disabled: True if period_spinner.text != "Costum Period" else False 
+
+						FloatLayout: # pusher down
+
+
+					
+					FloatLayout: # Puffer
+
+
+					# Weather Layout
+					BoxLayoutStandLine:
+						orientation: "vertical"
+						size_hint: None, None
+						size: dp(800), dp(400)
+						LabelBig1_longer:
+							pos_hint: {"center_x": 0.5}
+							text: "Load Weather File (.epw)"
+						ButtonBig1:
+							size: dp(250), dp(30)
+							pos_hint: {"center_x": 0.5}
+							text: "Load"
+							on_release: root.epw_popup_open()
+						LabelBig1_longer:
+							font_size: 16
+							pos_hint: {"center_x": 0.5}
+							text: root.epw_path
+							rgba: 0, 0, 0, 0
+
+
+		    			Label: # info panel
+		    				markup: True
+		    				size_hint: None, None
+							size: dp(750), dp(180)
+							pos_hint: {"center_x": 0.5}
+							font_size: dp(14)
+		    				text: 
+		    					"[i]Info: \n \
+    							For a simulation to work, a weather file must be loaded here. \n \
+		    					The weather file format used for simulations here, is the .epw format (Energy Plus Weather). \n \
+		    					The easiest way to choose the weather file for your location is the following website: \n \
+		    					https://www.ladybug.tools/epwmap/ \n \
+		    					\n \
+		    					Click on the location of interest and download the weather data to your pc. \n \
+		    					For finding and loading the weather files easily, place the folder containing the downloaded weather files under: \n \
+		    					C:\\...\\VentConcept\\epw_files[i]"
+		    				color: 0.7, 0.7, 0.7,1
+		    				halign: "left"
+		    				canvas.before:
+						        Color:
+						            rgba: .5, .5, .49, 1
+						        Line:
+						        	width: 1
+						        	rectangle: self.x, self.y, self.width, self.height
+						FloatLayout: # pusher
+
+
+					FloatLayout: # puffer
+
+					# RUN SIMULATION Layout
+					BoxLayout:
+						pos_hint: {"top": 1}
+						orientation: "vertical"
+						spacing: dp(20)
+						size_hint: None, None
+						size: dp(400), dp(400)
+						# Layout Detailedness
+						BoxLayoutLine_woPad:
+							orientation: 'vertical'
+							size: dp(380), dp(100)
+							LabelBig1:
+								font_size: dp(18)
+								text: "Detail of Simulation"
+								pos_hint: {"center_x": 0.3}
+							LabelBig1:
+								id: detailledness
+								font_size: dp(14)
+								text: "low (usually sufficient)"
+								pos_hint: {"center_x": .5}
+							BoxLayout:
+								orientation: "horizontal"
+								pos_hint: {"center_x": .5}
+								FloatLayout:
+								LabelSmall1:
+									text: "lower" 
+									pos_hint: {"left": 1}
+								Slider:
+									id: detailslider
+									size_hint: None, None
+									size: dp(200), dp(30)
+									# pos_hint: {"center_x": .5}
+									min: 0
+									max: 2
+									step: 1
+									on_value: root.slide_timestep(*args)
+								LabelSmall1:
+									pos_hint: {"right": 1}
+									text: "higher"
+								FloatLayout:
+						FloatLayout: # puffer
+
+						BoxLayoutLine_woPad:
+							orientation: 'vertical'
+							size: dp(380), dp(250)
+							canvas.before:
+						        Color:
+						            rgba: .3, .5, .5, 1
+						        Rectangle:
+						            pos: self.pos
+						            size: self.size
+							FloatLayout:
+							LabelBig1:
+								font_size: dp(28)
+								pos_hint: {"center_x": 0.5}
+								text: "Run Simulation"
+							ButtonBig1:
+								size: dp(250), dp(40)
+								pos_hint: {"center_x": 0.5}
+								text: "Start"
+								on_release: root.run_simulation()
+							FloatLayout:
+
+							LabelBig1:
+								id: simulationwasrun
+								font_size: dp(20)
+								pos_hint: {"center_x": 0.5}
+								text: " "
+							FloatLayout:
+
+
+
+				# under Layout	
+				BoxLayout:
+					orientation: "horizontal"
+					padding: dp(20), dp(15)
+					spacing: dp(10)
+
+
+
+					# Layout Terrain
+					BoxLayoutStandLine:
+						orientation: "vertical"
+						size: dp(400), dp(450)
+						FloatLayout:
+						LabelBig1:
+							text: "Terrain Type of Context"
+							size: dp(250), dp(30)
+							pos_hint: {"center_x": 0.5}
+						SpinnerC:
+							size: dp(250), dp(30)
+							pos_hint: {"center_x": 0.5}
+							id: spinnerTer
+							typ: "sm"
+							text: "Urban"
+							values: "Seaside", "Country", "Suburbs", "Urban", "City"
+							on_text: root.spinner_clicked_ter(spinnerTer.text)
+						FloatLayout:
+		    			Label: # info panel
+		    				markup: True
+		    				size_hint: None, None
+							size: dp(250), dp(120)
+							pos_hint: {"center_x": 0.5}
+							font_size: dp(14)
+		    				text: 
+		    					"[i]Info: \n \
+		    					Set the terrain type \n \
+		    					according to the sourrounding \n \
+		    					of your project. \n \
+		    					This will influence the wind \n \
+		    					velocity for the simulation[i]"
+		    				color: 0.7, 0.7, 0.7,1
+		    				halign: "left"
+		    				canvas.before:
+						        Color:
+						            rgba: .5, .5, .49, 1
+						        Line:
+						        	width: 1
+						        	rectangle: self.x, self.y, self.width, self.height
+						FloatLayout: # pusher
+
+					FloatLayout: # puffer 
+
+					# Set Points Layout
+			    	BoxLayoutStandLine:	
+
+
+			    		orientation: "horizontal"
+			    		size_hint: None, None
+			    		height: dp(450)
+			    		width: dp(800)
+
+			    		BoxLayout:
+			    			orientation: "vertical"
+			    			size_hint: None, 1
+			    			width: 380
+
+
+				    		FloatLayout: # puffer
+
+				    		LabelBig1:
+				    			text: "Window Opening Setpoints"
+				    			pos_hint: {"center_x": 0.5}
+
+				    		FloatLayout: # puffer
+				    		Label:
+				    			size_hint: 1, None
+				    			height: dp(10)
+
+				    		# caption
+				    		BoxLayout: 
+				    			orientation: "horizontal"
+				    			size_hint: 1, None
+				    			height: dp(30)
+				    			Label:
+				    				size_hint: 0.5, None
+				    				text: "Set Points"
+
+				    			Label:
+				    				size_hint: 0.5, None
+				    				text: "Temperatur in C°"
+
+
+
+							# container 1 SetPoints
+				    		BoxLayout:
+				    			spacing: dp(10)
+				    			# padding: dp(20)
+				    			orientation: "horizontal"
+				    			size_hint: 1, None
+				    			height: dp(95)
+
+				    			# box for max outdoor temp
+								BoxLayoutLine_woPad:
+									orientation: "vertical"
+									size_hint: 0.7, None
+									height: dp(60)
+									FloatLayout: # puffer
+
+									BoxLayout:
+										orientation: "horizontal"
+										FloatLayout: # pusher right
+
+										BoxLayout:
+											orientation: "vertical"
+											size_hint: 1, None
+											height: dp(50)
+											LabelSmall1:
+												pos_hint: {"center_x": 0.5}
+												text: "Max Outdoor Temperature"
+											FloatLayout: # puffer middle
+										FloatLayout:
+
+										BoxLayout:
+											orientation: "vertical"
+											size_hint: 1, None
+											height: dp(50)
+											TeInFixed:
+												id: text_max
+												pos_hint: {"center_x": 0.5}
+												text: "25.0"
+												on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("text_max") 
+												on_text_validate: root.set_point_set(self.text, "max_out", "text_max")
+											FloatLayout: # puffer middle
+
+							# container 2 SetPoints
+				    		BoxLayout:
+				    			spacing: dp(10)
+				    			# padding: dp(20)
+				    			orientation: "horizontal"
+				    			size_hint: 1, None
+				    			height: dp(95)
+
+				    			# box for max outdoor temp
+								BoxLayoutLine_woPad:
+									orientation: "vertical"
+									size_hint: 0.7, None
+									height: dp(60)
+									FloatLayout: # puffer
+
+									BoxLayout:
+										orientation: "horizontal"
+										FloatLayout: # pusher right
+
+										BoxLayout:
+											orientation: "vertical"
+											size_hint: 1, None
+											height: dp(50)
+											LabelSmall1:
+												pos_hint: {"center_x": 0.5}
+												text: "Min Indoor Temperature"
+											FloatLayout: # puffer middle
+										FloatLayout:
+
+										BoxLayout:
+											orientation: "vertical"
+											size_hint: 1, None
+											height: dp(50)
+											TeInFixed:
+												id: text_min
+												pos_hint: {"center_x": 0.5}
+												text: "18.0"
+												on_touch_down: if self.collide_point(*args[1].pos): root.set_red_color("text_min") 
+												on_text_validate: root.set_point_set(self.text, "min_ind", "text_min")
+											FloatLayout: # puffer middle
+
+							FloatLayout: # pusher down
+
+						FloatLayout:
+
+			    		BoxLayout:
+			    			orientation: "vertical"
+			    			size_hint: None, 1
+			    			width: 380
+			    			Label: # info panel
+			    				markup: True
+			    				size_hint: None, None
+								size: dp(310), dp(380)
+								pos_hint: {"center_x": 0.5}
+								font_size: dp(14)
+			    				text: 
+			    					"[i]Info: \n \
+									The Maximal Outdoor Temperature \n \
+									is the maximal outside temperature \n \
+									to where the windows are set be open. \n \
+									Example 25°C: If the outdoor \n \
+									temperature increases to \n \
+									over 25°C, the windows will be closed \n \
+									(under 25°C, open). \n \
+									\n \
+									The Minimal Indoor Temperature \n \
+									is the minimal temperature inside \n \
+									the building to where the \n \
+									windows are set to open \n \
+									Example 18°C: If the indoor \n \
+									temperaure drops below \n \
+									18°C the windows will be closed \n \
+									(above 18°C, open) \n \
+									\n \
+									(only works if openings are not set \n \
+									to closed under the geometry panel.)[i]"
+			    				color: 0.7, 0.7, 0.7,1
+			    				halign: "left"
+			    				canvas.before:
+							        Color:
+							            rgba: .5, .5, .49, 1
+							        Line:
+							        	width: 1
+							        	rectangle: self.x, self.y, self.width, self.height
+
+
+					FloatLayout: # puffer
+
+					# empty layout for making nice grid 3 x 2
+					BoxLayout:
+						size_hint: None, None
+						size: dp(400), dp(400)
+
+
+
+
+
+		MainTabI:
+			text: "Results"
+			on_release: root.reset_simulation_was_run()
+			BoxLayout:
+				id: boxlay1
+				orientation: 'vertical'
+				ScreenTogLayout_2:
+					size_hint: 1, None
+					height: dp(80)
+				ScreenLayout_2:
+					id: sclay_2
+
+
