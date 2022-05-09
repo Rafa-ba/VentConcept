@@ -16,6 +16,3 @@ Now, VentConcept is ready to be used!
 
 ## License
 AGPL, read the License Agreement
-
-## Dependencies
-VentConcept is based on Ladybug Tools. 
