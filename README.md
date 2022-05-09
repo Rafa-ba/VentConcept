@@ -1,3 +1,4 @@
+<img src="https://github.com/Rafa-ba/VentConcept/blob/main/VentConcept_logo.png" alt="drawing" width="100"/>
 ![Image](https://github.com/Rafa-ba/VentConcept/blob/main/VentConcept_logo.png)
 
 # VentConcept
