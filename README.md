@@ -11,7 +11,7 @@ Now, VentConcept is ready to be used!
 
 ## System Requirements
 - Windows 10
-- Full HD Display or higher (1920x1080 pxs) - Make also sure that under the _Display -> Change the size of text, apps, and other items_ the scale is set to 100 % (in the case of FHD) or accordingly reduced in the case of higher resulutions. This is important to have all VentConcept items appearing correctly on the screen, as the scaling behavior of the current version is quite limited.
+- Full HD Display (1920x1080 pxs) or higher resolution - Make also sure that under the  _Settings -> Display -> Change the size of text, apps, and other items_  the scale is set to 100 % (in the case of FHD) or accordingly reduced in the case of higher resulutions. This is important to have all VentConcept items appearing correctly on the screen, as the scaling behavior of the current version is quite limited.
 
 
 ## License
