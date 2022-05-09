@@ -1,5 +1,5 @@
-<img src="https://github.com/Rafa-ba/VentConcept/blob/main/VentConcept_logo.png" alt="drawing" width="100"/>
-![Image](https://github.com/Rafa-ba/VentConcept/blob/main/VentConcept_logo.png)
+<img src="https://github.com/Rafa-ba/VentConcept/blob/main/VentConcept_logo.png" alt="drawing" width="120"/>
+
 
 # VentConcept
 Simulation Tool for assessing Natural Ventilation strategies in the early stages of building design. VentConcept allows the user to test out different Natural Ventilation strategies and scenarios, to improve their design based on the simulation results. The program was built with the idea of simplifying the simulation process to a maximum, making it intuitive also for users with no background in simulation.
