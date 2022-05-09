@@ -1,0 +1,12 @@
+{
+  "2019::Courthouse::Plenum": {
+    "type": "ProgramTypeAbridged",
+    "identifier": "2019::Courthouse::Plenum",
+    "infiltration": {
+      "type": "InfiltrationAbridged",
+      "identifier": "2019::Courthouse::Plenum_Infiltration",
+      "flow_per_exterior_area": 0.00022656800000000002,
+      "schedule": "Courthouse_INFIL_SCH"
+    }
+  }
+}

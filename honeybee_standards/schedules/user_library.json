@@ -1,0 +1,15 @@
+{
+    "Always On": {
+    "type": "ScheduleRulesetAbridged",
+    "identifier": "Always On",
+    "day_schedules": [{
+        "type": "ScheduleDay",
+        "identifier": "Always On_Day Schedule",
+        "values": [1.0],
+        "times": [[0, 0]],
+        "interpolate": false
+      }],
+    "default_day_schedule": "Always On_Day Schedule",
+    "schedule_type_limit": "Fractional"
+    }
+}
