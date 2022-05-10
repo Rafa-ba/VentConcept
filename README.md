@@ -13,7 +13,7 @@ Download the VentConcept Installer _VentConcept_Installer.exe_ from the reposito
 \
 VentConcept is setup and ready to be used :)\
 \
-**Note that the text inside text fields of VentConcept must appear in black. If it is marked 
+**Note that the text inside text fields of VentConcept must appear in black. If it is marked**
 <font color="rgb(255,10,0)"> 
 red 
 <font color="rgb(0,0,0)">
