@@ -10,6 +10,7 @@ VentConcept code is based on [Ladybug Tools](https://github.com/ladybug-tools). 
 ## Getting Started
 Download and install OpenStudio Version 1.2.1 (higher versions lead to error in the air changes per hour plots under the results tab of VentConcept). OpenStudio 1.2.1 can be downloaded from (https://github.com/openstudiocoalition/OpenStudioApplication/releases).
 Download the VentConcept Installer _VentConcept_Installer.exe_ from the repository. Install the program, preferencably outside the Windows program directories (use the preset options of the installer).\
+\
 Now, VentConcept is ready to be used! :)
 
 ## System Requirements
