@@ -5,7 +5,7 @@
 Simulation Tool for assessing Natural Ventilation strategies in the early stages of building design. VentConcept allows the user to test out different Natural Ventilation strategies and scenarios, to improve their design based on the simulation results. The program was built with the idea of simplifying the simulation process to a maximum, making it intuitive also for users with no background in simulation.
 
 ## Description
-VentConcept code is based on [Ladybug Tools](https://github.com/ladybug-tools). Other than Ladybug Tools, VentConcept has its own GUI. The GUI was done with [Kivy](https://kivy.org/#home). Simulations are run through [OpenStudio](https://openstudio.net/). Ladybug Tools libraries are slightly modified, especially due to pyinstaller incompatability of dynamicly imported packages (through importlib), a pratique, commonly used in Ladybug Tools. Ladybug Tools Version 1.3.0 was used.
+VentConcept code is based on [Ladybug Tools](https://github.com/ladybug-tools). Other than Ladybug Tools, VentConcept has its own GUI. The GUI was done with [Kivy](https://kivy.org/#home). Simulations are run through [OpenStudio](https://openstudio.net/). Ladybug Tools libraries are slightly modified, especially due to pyinstaller incompatability of dynamicly imported packages (through importlib), a practice, commonly used in Ladybug Tools. Ladybug Tools Version 1.3.0 was used.
 
 ## Getting Started
 Download and install OpenStudio Version 1.2.1 (higher versions lead to error in the air changes per hour plots under the results tab of VentConcept). OpenStudio 1.2.1 can be downloaded from (https://github.com/openstudiocoalition/OpenStudioApplication/releases).
