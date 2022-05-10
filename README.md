@@ -13,11 +13,7 @@ Download the VentConcept Installer _VentConcept_Installer.exe_ from the reposito
 \
 VentConcept is setup and ready to be used :)\
 \
-**Note that the text inside text fields of VentConcept must appear in black. If it is marked**
-<font color="rgb(255,10,0)"> 
-red 
-<font color="rgb(0,0,0)">
-, it is not validated yet. Only by pressing enter the text will be applied and switch back to black color. Check the pdf files _VentConcept__User Instruction_, as it clarify this doubt in more detail and further doubts!**
+**Note that the text inside text fields of VentConcept must appear in black. If it is marked RED, it is not validated yet. Only by pressing enter the text will be applied and switch back to BLACK color. Check the pdf files _VentConcept__User Instruction_, as it clarify this doubt in more detail and further doubts!**
 
 ## System Requirements
 - Windows 10
