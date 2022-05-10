@@ -11,12 +11,16 @@ VentConcept code is based on [Ladybug Tools](https://github.com/ladybug-tools). 
 Download and install OpenStudio Version 1.2.1 (higher versions lead to error in the air changes per hour plots under the results tab of VentConcept). OpenStudio 1.2.1 can be downloaded from (https://github.com/openstudiocoalition/OpenStudioApplication/releases).
 Download the VentConcept Installer _VentConcept_Installer.exe_ from the repository. Install the program, preferencably outside the Windows program directories (use the preset options of the installer).\
 \
-VentConcept is setup and ready to be used :)
+VentConcept is setup and ready to be used :)\
+\
+**Note that the text inside text fields of VentConcept must appear in black. If it is marked <font color="rgb(255,10,0)"> red <font color="rgb(0,0,0)">, it is not validated yet. Only by pressing enter the text will be applied and switch back to black color. Check the pdf files _VentConcept__User Instruction_, as it clarify this doubt in more detail and further doubts!**
 
 ## System Requirements
 - Windows 10
 - Full HD Display (1920x1080 pxs) or higher resolution - Make also sure that under the  _Settings -> Display -> Change the size of text, apps, and other items_  the scale is set to 100 % (in the case of FHD) or accordingly reduced in the case of higher resulutions. This is important to have all VentConcept items appearing correctly on the screen, as the scaling behavior of the current version is quite limited.
 
-
 ## License
 AGPL, read the License Agreement
+
+## Note
+
