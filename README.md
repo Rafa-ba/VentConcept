@@ -12,8 +12,8 @@ Download and install OpenStudio Version 1.2.1 (higher versions lead to error in 
 Then, download the VentConcept Installer _VentConcept_Installer.exe_ from the repository. Install the program, preferencably outside the Windows program directories (use the preset options from the installer).\
 \
 VentConcept is setup and ready to be used :)\
-\
-### Note that the text inside text fields of VentConcept must appear in black. If it is marked RED, it is not validated yet. Only by pressing the _enter_ key the text will be applied and turn BLACK again. Check the pdf files _VentConcept__User Instruction_, as it clarify this doubt in more detail and further doubts!
+
+#### Note that the text inside text fields of VentConcept must appear in black. If it is marked RED, it is not validated yet. Only by pressing the _enter_ key the text will be applied and turn BLACK again. Check the pdf files _VentConcept__User Instruction_, as it clarify this doubt in more detail and further doubts!
 
 ## System Requirements
 - Windows 10
