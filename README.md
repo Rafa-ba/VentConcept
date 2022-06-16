@@ -13,8 +13,8 @@ Then, download the VentConcept Installer _VentConcept_Installer.exe_ from the re
 \
 VentConcept is setup and ready to be used :)
 
-### NOTE: \
-The text inside the text fields of VentConcept must appear in black. If it is marked RED, it is not validated yet. Only by pressing the _enter_ key the content of the text fields will be considered by VentConcep and turn BLACK again. Check the pdf file _VentConcept__User Instruction.pdf_, as it clarifies this doubt and other doubts!
+### NOTE:
+### The text inside the text fields of VentConcept must appear in black. If it is marked RED, it is not validated yet. Only by pressing the _enter_ key the content of the text fields will be considered by VentConcep and turn BLACK again. Check the pdf file _VentConcept__User Instruction.pdf_, as it clarifies this doubt and other doubts!
 
 ## System Requirements
 - Windows 10
